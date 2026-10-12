@@ -1,0 +1,549 @@
+{
+  "session": "Session 2026 / 2027",
+  "hero": {
+    "title": "Engineering the Future, Together.",
+    "body": "Welcome to the Institution of Engineers Malaysia Student Section (IEMSS) at Universiti Tun Hussein Onn Malaysia. We bridge the gap between academic learning and professional excellence."
+  },
+  "about": {
+    "heading": "Who we are",
+    "p1": "At IEMSS-UTHM, we are more than just a student organisation; we are a launchpad for future innovators. Our mission is to cultivate a vibrant engineering culture on campus by giving students across mechanical, manufacturing and every other engineering discipline the tools, network and experiences they need to thrive in the modern industrial landscape.",
+    "p2": "From technical design sprints to large-scale campus festivals, we empower students to step out of the classroom and into the real world of engineering."
+  },
+  "members": {
+    "count": 4228,
+    "caption": "and still counting",
+    "blurb": "Membership stays active until you graduate. Cards are collected at the IEMSS booth."
+  },
+  "next": {
+    "name": "Welcoming Freshies Night: Together We Thrive",
+    "when": "2026-10-10T20:00:00+08:00",
+    "label": "Saturday, 10 October 2026",
+    "blurb": "The opening night of the session for new engineering students. Details and registration go out through our social channels closer to the date."
+  },
+  "regDay": {
+    "name": "IEM Student Section UTHM Membership Registration Day",
+    "when": "2026-10-17T09:00:00+08:00",
+    "label": "Saturday, 17 October 2026 · Dewan Kuliah A, G3",
+    "blurb": "Bring your matric card. Committee members will be at the hall to register you on the spot and answer questions about IEM."
+  },
+  "contact": {
+    "email": "iemssuthm@gmail.com",
+    "office": "IEMSS office, B001, B7",
+    "address": "UTHM, 86400 Parit Raja, Batu Pahat, Johor",
+    "socials": "https://linktr.ee/iemss_uthm",
+    "iem": "https://www.myiem.org.my",
+    "cardStatus": "https://iemssuthm-membership.netlify.app/",
+    "cardStatusLabel": "Click to check your membership card status",
+    "blurb": "Questions about membership, collaborations or sponsorship — the secretariat replies within two working days."
+  },
+  "membership": {
+    "lede": "IEM student membership connects you to the national body of engineers while you are still studying — talks, site visits, competitions and a professional record that starts before your first job.",
+    "noteTitle": "UTHM engineering students, local intake: you have already paid.",
+    "noteBody": "The RM50 IEM student subscription is bundled into your first-semester fees. You do not pay it a second time — just register and collect your card.",
+    "costBody": "For everyone else it is a one-off RM50, valid until you graduate. That single payment covers every IEMSS programme we run — site visits, workshops, talks, competitions — with no per-event fee. The equivalent technical events outside campus routinely charge hundreds to thousands of ringgit each.",
+    "benefits": [
+      {
+        "title": "Every programme, no extra fee",
+        "body": "Workshops, competitions and site visits are free to members for the whole of your degree."
+      },
+      {
+        "title": "IEM journals and bulletins",
+        "body": "Full digital access through your IEM member account."
+      },
+      {
+        "title": "A head start on graduate membership",
+        "body": "Your student record carries over when you convert after graduation."
+      },
+      {
+        "title": "National-level competitions",
+        "body": "Entry to IEM-run student competitions at branch and national level."
+      }
+    ],
+    "steps": [
+      {
+        "title": "Come to Membership Registration Day",
+        "body": "17 October 2026, Dewan Kuliah A, G3. Or register online at myiem.org.my any time."
+      },
+      {
+        "title": "Bring your matric card and student details",
+        "body": "Committee members verify your faculty and programme on the spot."
+      },
+      {
+        "title": "Settle the subscription if it applies to you",
+        "body": "Local UTHM engineering students are already covered by first-semester fees."
+      },
+      {
+        "title": "Collect your card at the IEMSS booth",
+        "body": "Check the collection status page before you come down."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Can first-year students join?",
+        "a": "Yes. Any UTHM student enrolled in an engineering or engineering technology programme is eligible."
+      },
+      {
+        "q": "I lost my card. What now?",
+        "a": "Email iemssuthm@gmail.com with your membership number. Replacement takes about three weeks."
+      }
+    ]
+  },
+  "upcoming": [
+    {
+      "name": "Welcoming Freshies Night: Together We Thrive",
+      "date": "2026-10-10",
+      "label": "Saturday",
+      "venue": ""
+    },
+    {
+      "name": "NEESIC 2.0 (Poster Competition)",
+      "date": "2026-10-10",
+      "label": "10 October – 10 November 2026",
+      "venue": ""
+    },
+    {
+      "name": "Membership Registration Day",
+      "date": "2026-10-17",
+      "label": "Saturday",
+      "venue": "Dewan Kuliah A, G3"
+    },
+    {
+      "name": "The IEMSS-UTHM & TalentCorp Career Bootcamp",
+      "date": "2026-10-31",
+      "label": "Saturday",
+      "venue": ""
+    },
+    {
+      "name": "Technical Talk",
+      "date": "2026-11-28",
+      "label": "Saturday",
+      "venue": ""
+    },
+    {
+      "name": "Technical Visit",
+      "date": "2026-12-14",
+      "label": "",
+      "venue": ""
+    }
+  ],
+  "upcomingTBA": [
+    {
+      "name": "STEM Program"
+    },
+    {
+      "name": "IEM Student Section UTHM Membership Registration Day (Online)"
+    },
+    {
+      "name": "Technical Visit 2.0"
+    },
+    {
+      "name": "Engineer Night Run (Glow Run)"
+    },
+    {
+      "name": "Annual Grand Dinner"
+    },
+    {
+      "name": "Annual Grand Meeting"
+    }
+  ],
+  "past": [
+    {
+      "year": "2026",
+      "name": "Expedition to ENGINEER & MARVEX 2026",
+      "date": "24 September 2026",
+      "venue": "KLCC",
+      "photos": "MARVEX2026"
+    },
+    {
+      "year": "2026",
+      "name": "IEM YES NATIONAL SUMMIT 2026",
+      "date": "30 July 2026 - 2 August",
+      "venue": "Trove Hotel,Johor Bahru",
+      "photos": "NS2026"
+    },
+    {
+      "year": "2026",
+      "name": "Annual Grand Meeting 2025/2026",
+      "date": "19 June 2026",
+      "venue": "Auditorium Al-Jazari, PTTA",
+      "photos": "grand-meeting"
+    },
+    {
+      "year": "2026",
+      "name": "Annual Grand Dinner 2026",
+      "date": "13 June 2026",
+      "venue": "Dewan F2 Bawah",
+      "photos": "grand-dinner"
+    },
+    {
+      "year": "2026",
+      "name": "Roadmap as Future Engineer for Industrial Revolution 4.0",
+      "date": "30 May 2026",
+      "venue": "Online (Google Meet)",
+      "photos": "roadmap-ir4"
+    },
+    {
+      "year": "2026",
+      "name": "Engineering Color Run",
+      "date": "23 May 2026",
+      "venue": "UTHM",
+      "photos": "color-run"
+    },
+    {
+      "year": "2026",
+      "name": "IEMSS UTHM x SJK(C) Kong Nan: The Green Hero Project",
+      "date": "22 May 2026",
+      "venue": "SJK(C) Kong Nan",
+      "photos": "green-hero"
+    },
+    {
+      "year": "2026",
+      "name": "National Energy Efficiency & Sustainable Innovation Competition (NEESIC)",
+      "date": "4 – 18 May 2026",
+      "venue": "",
+      "photos": "neesic"
+    },
+    {
+      "year": "2026",
+      "name": "IEM Student Section UTHM Membership Registration Day (Online)",
+      "date": "16 May 2026",
+      "venue": "Online (Google Meet)",
+      "photos": "membership-online"
+    },
+    {
+      "year": "2026",
+      "name": "Industrial Talk: From Student to Professional",
+      "date": "9 May 2026",
+      "venue": "Online (Google Meet)",
+      "photos": "student-to-pro"
+    },
+    {
+      "year": "2026",
+      "name": "Professional Talk on Career Bootcamp & IEM Membership Registration",
+      "date": "23 April 2026",
+      "venue": "Pagoh",
+      "photos": "membership-apr"
+    },
+    {
+      "year": "2026",
+      "name": "Technical Visit to CelcomDigi AI Experience (AiX)",
+      "date": "20 April 2026",
+      "venue": "CelcomDigi Hub, Subang Jaya",
+      "photos": "celcomdigi"
+    },
+    {
+      "year": "2026",
+      "name": "Renewable Energy Industrial Talk",
+      "date": "17 April 2026",
+      "venue": "Dewan Kuliah 3, B2",
+      "photos": "renewable-talk"
+    },
+    {
+      "year": "2026",
+      "name": "Resume Clinic: Building a Professional Resume",
+      "date": "17 April 2026",
+      "venue": "Bilik Kuliah E5, G3",
+      "photos": "resume-clinic"
+    },
+    {
+      "year": "2026",
+      "name": "Safety & Health Talk",
+      "date": "2 April 2026",
+      "venue": "Online (Google Meet)",
+      "photos": "safety-talk"
+    },
+    {
+      "year": "2026",
+      "name": "AutoCAD Competition: Drafting the Future, Precision in Every Dimension",
+      "date": "11 – 17 March 2026",
+      "venue": "Online (Google Meet)",
+      "photos": "autocad-comp"
+    },
+    {
+      "year": "2026",
+      "name": "AutoCAD Workshop: Professional Drafting & Technical Documentation",
+      "date": "9 March 2026",
+      "venue": "Online (Google Meet)",
+      "photos": "autocad-workshop"
+    },
+    {
+      "year": "2026",
+      "name": "SolidWorks Competition: The SolidWorks Design Sprint Challenge",
+      "date": "25 February 2026",
+      "venue": "Online (Google Meet)",
+      "photos": "solidworks-comp"
+    },
+    {
+      "year": "2026",
+      "name": "SolidWorks Workshop: Masterclass Concept to Creation",
+      "date": "23 February 2026",
+      "venue": "Online (Google Meet)",
+      "photos": "solidworks-workshop"
+    },
+    {
+      "year": "2026",
+      "name": "Membership Registration Day & Industry Knowledge Sharing with Cytron Technologies",
+      "date": "16 January 2026",
+      "venue": "",
+      "photos": "cytron"
+    },
+    {
+      "year": "2025",
+      "name": "Career Talk: Engineering Your Future",
+      "date": "19 December 2025",
+      "venue": "Online (Google Meet)",
+      "photos": "career-talk"
+    },
+    {
+      "year": "2025",
+      "name": "Forum: Aligning Expectations for Future Graduates",
+      "date": "5 December 2025",
+      "venue": "Dewan Kuliah 1, B2",
+      "photos": "forum-expectations"
+    },
+    {
+      "year": "2025",
+      "name": "Membership Registration Day",
+      "date": "29 November 2025",
+      "venue": "Dewan Kuliah A, G3",
+      "photos": "membership-nov"
+    },
+    {
+      "year": "2025",
+      "name": "FreeRTOS Workshop",
+      "date": "14 November 2025",
+      "venue": "Innovation Lab, G1",
+      "photos": "freertos"
+    },
+    {
+      "year": "2025",
+      "name": "Empowering Future Engineers: UPaL Guide to Professional Certification",
+      "date": "29 October 2025",
+      "venue": "Online (Microsoft Teams)",
+      "photos": "upal"
+    },
+    {
+      "year": "2025",
+      "name": "Welcoming Night 25/26",
+      "date": "17 October 2025",
+      "venue": "BS B1, B6",
+      "photos": "welcoming-night"
+    },
+    {
+      "year": "2025",
+      "name": "IEMUMPSA x IEMUTHM Student Section Green Energy Seminar & Site Visit",
+      "date": "11 January 2025",
+      "venue": "UMPSA, Pahang",
+      "photos": "green-energy"
+    }
+  ],
+  "org": {
+    "facultyAdvisors": [
+      {
+        "name": "Prof. Madya Ir. Ts. Dr. Bukhari bin Manshoor"
+      },
+      {
+        "name": "Prof. Madya Ir. Dr. Chia Kim Seng"
+      },
+      {
+        "name": "Ts. Nur Azliza binti Ahmad"
+      }
+    ],
+    "studentAdvisors": [
+      {
+        "name": "Kevinraj Gaunder Selvaraju"
+      },
+      {
+        "name": "Thumilen Ravi"
+      }
+    ],
+    "high": [
+      {
+        "role": "Chairperson",
+        "name": "Navina Shubaschander"
+      },
+      {
+        "role": "Deputy Chairperson",
+        "name": "Puteri Siti Hannani binti Ahmad Hazfizi"
+      },
+      {
+        "role": "Secretary",
+        "name": "Rhydian Woon Jia Quan"
+      },
+      {
+        "role": "Treasurer",
+        "name": "Koh Guan Ming"
+      }
+    ],
+    "departments": [
+      {
+        "name": "Multimedia and Publicity",
+        "hod": "Teo Chi San",
+        "members": [
+          {
+            "name": "Nur Najwa Balqis binti Mohd Rashid"
+          },
+          {
+            "name": "Charmaine Ng"
+          },
+          {
+            "name": "Lim Le Jeff"
+          },
+          {
+            "name": "Muhammad Irfan bin Mahadzir"
+          }
+        ]
+      },
+      {
+        "name": "Professional & Development",
+        "hod": "Richen Leo Banus",
+        "members": [
+          {
+            "name": "Nurin Atikah binti Nor Azian"
+          },
+          {
+            "name": "Omer Abozaid Khalifa Musa"
+          }
+        ]
+      },
+      {
+        "name": "Student Affair",
+        "hod": "Kok Ming Xuan",
+        "members": [
+          {
+            "name": "Mayrna Erna Joseph"
+          },
+          {
+            "name": "Awab Abdalbadee Mohammedalhassan Siralkhatim"
+          },
+          {
+            "name": "Yeo Ai Xin"
+          }
+        ]
+      },
+      {
+        "name": "External Affair",
+        "hod": "Danial Ariff bin Faiz",
+        "members": [
+          {
+            "name": "Teoh Yeong Boon"
+          },
+          {
+            "name": "Nur Aisyah binti Mohamad Nizam"
+          }
+        ]
+      },
+      {
+        "name": "Office Affair",
+        "hod": "Cham Jia Yi",
+        "members": [
+          {
+            "name": "Muhammad Azri bin Azhar"
+          },
+          {
+            "name": "Omer Elmubarak Omer Elhado"
+          }
+        ]
+      },
+      {
+        "name": "Public Relation",
+        "hod": "Naveendran a/l Mail Waganam",
+        "members": [
+          {
+            "name": "Nur Alya Zakirah binti Zulkifli"
+          },
+          {
+            "name": "Deswgy Khalid Mohamed Ahmed"
+          }
+        ]
+      }
+    ]
+  },
+  "roster": {
+    "statusTitle": "confirmed for session 2026 / 2027",
+    "status": "The hours below are session's roster.",
+    "note": "Walk in to the IEMSS office at B001, B7 during any ticked hour to collect your membership card, ask about registration, or talk to the committee about anything else. No appointment needed.",
+    "startHour": 9,
+    "days": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "hours": [
+      "9:00 – 10:00",
+      "10:00 – 11:00",
+      "11:00 – 12:00",
+      "12:00 – 1:00",
+      "1:00 – 2:00",
+      "2:00 – 3:00",
+      "3:00 – 4:00"
+    ],
+    "grid": [
+      [
+        false,
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "",
+        "",
+        "",
+        false,
+        ""
+      ],
+      [
+        "",
+        "",
+        "",
+        "",
+        false
+      ],
+      [
+        "",
+        "",
+        false,
+        "",
+        ""
+      ],
+      [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    ]
+  },
+  "forms": {
+    "endpoint": "https://script.google.com/macros/s/AKfycbwFzitsq-2r28hBpC82TsEoo24Ob-amB0Ayn7hGNZa1KvJCwN77QK73mS0me6geAzlb/exec",
+    "successMsg": "Thank you — your message is with the secretariat. We usually reply within two working days.",
+    "failMsg": "That did not send. Please email iemssuthm@gmail.com directly."
+  },
+  "deckOrder": [
+    "next",
+    "members",
+    "office",
+    "upcoming",
+    "committee",
+    "recent",
+    "contact"
+  ]
+}

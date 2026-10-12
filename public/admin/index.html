@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>IEMSS UTHM — site manager</title>
+<link rel="icon" href="../assets/iemss-logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --void:#05070F; --panel:#0B1426; --panel-2:#0E1A33; --line:rgba(64,166,255,.2);
+  --neon:#25E0FF; --electric:#3F7BFF; --gold:#D6B26A; --good:#39F27E; --bad:#FF7B7B;
+  --ink:#E7F0FB; --mute:#8CA0BE;
+  --display:"Chakra Petch",system-ui,sans-serif;
+  --body:Cambria,"Palatino Linotype",Georgia,serif;
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--void);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.65}
+h1,h2,h3,h4,button,label,th,.tabs a,.badge,input,select,textarea{font-family:var(--display)}
+h1,h2,h3{margin:0;font-weight:600;line-height:1.2}
+a{color:var(--neon)}
+:focus-visible{outline:2px solid var(--neon);outline-offset:2px}
+
+/* ---------- sign in ---------- */
+.gate{min-height:100vh;display:grid;place-items:center;padding:24px}
+.gatebox{width:100%;max-width:400px;background:linear-gradient(180deg,var(--panel-2),var(--panel));
+  border:1px solid var(--line);border-radius:14px;padding:32px}
+.gatebox img{width:64px;height:64px;border-radius:50%;background:#fff;padding:2px;display:block;margin:0 auto 18px}
+.gatebox h1{font-size:19px;text-align:center;margin-bottom:6px}
+.gatebox p{color:var(--mute);font-size:14px;text-align:center;margin:0 0 22px}
+
+/* ---------- shell ---------- */
+.top{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  padding:12px 20px;background:rgba(5,7,15,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+.top img{width:34px;height:34px;border-radius:50%;background:#fff;padding:1px}
+.top b{font-family:var(--display);font-size:15px;display:block;line-height:1.2}
+.top small{color:var(--mute);font-size:12px}
+.spacer{flex:1}
+.tabs{display:flex;gap:4px;overflow-x:auto;padding:10px 20px 0;border-bottom:1px solid var(--line);
+  position:sticky;top:60px;z-index:29;background:var(--void)}
+.tabs a{padding:9px 14px;border-radius:8px 8px 0 0;color:var(--mute);text-decoration:none;font-size:14px;
+  font-weight:600;white-space:nowrap;border:1px solid transparent;border-bottom:0;cursor:pointer}
+.tabs a:hover{color:var(--ink);background:rgba(63,123,255,.08)}
+.tabs a.on{color:var(--ink);background:var(--panel);border-color:var(--line)}
+main{padding:26px 20px 120px;max-width:1000px;margin:0 auto}
+.pane{display:none;animation:in .3s var(--ease) both}
+.pane.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}
+
+/* ---------- pieces ---------- */
+.card{background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--line);
+  border-radius:12px;padding:20px;margin-bottom:16px}
+.card > h2{font-size:16px;margin-bottom:4px}
+.card > .hint{color:var(--mute);font-size:13.5px;margin:0 0 18px}
+.hint{color:var(--mute);font-size:13.5px}
+label.f{display:block;margin-bottom:16px}
+label.f > span{display:block;font-size:13px;color:var(--mute);margin-bottom:6px;font-weight:600;letter-spacing:.02em}
+input,select,textarea{width:100%;background:rgba(4,6,15,.75);border:1px solid var(--line);border-radius:8px;
+  color:var(--ink);padding:10px 12px;font-size:14.5px;font-family:var(--body)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--neon);box-shadow:0 0 0 3px rgba(37,224,255,.13)}
+textarea{min-height:92px;resize:vertical;line-height:1.6}
+.grid2{display:grid;gap:0 16px;grid-template-columns:1fr 1fr}
+.grid3{display:grid;gap:0 16px;grid-template-columns:1fr 1fr 1fr}
+button{font-size:14px;font-weight:600;padding:9px 16px;border-radius:8px;border:1px solid var(--line);
+  background:rgba(63,123,255,.12);color:var(--ink);cursor:pointer;transition:background .15s,border-color .15s}
+button:hover{background:rgba(37,224,255,.18);border-color:var(--neon)}
+button:disabled{opacity:.5;cursor:not-allowed}
+button.primary{background:linear-gradient(180deg,var(--electric),#2A5AE0);border-color:transparent;color:#fff}
+button.primary:hover{background:linear-gradient(180deg,#5590FF,#3163E8)}
+button.sm{padding:6px 11px;font-size:13px}
+button.danger{color:var(--bad);border-color:rgba(255,123,123,.3);background:rgba(255,80,80,.09)}
+button.danger:hover{background:rgba(255,80,80,.2)}
+.row{border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:12px;background:rgba(8,14,30,.6)}
+.rowtop{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.rowtop b{font-family:var(--display);font-size:14px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.num{width:26px;height:26px;flex:none;display:grid;place-items:center;border-radius:6px;font-family:var(--display);
+  font-size:12px;font-weight:700;color:var(--neon);background:rgba(37,224,255,.1);border:1px solid var(--line)}
+.msg{padding:12px 15px;border-radius:9px;margin-bottom:16px;font-size:14px;display:none}
+.msg.show{display:block}
+.msg.good{border:1px solid rgba(57,242,126,.35);background:rgba(57,242,126,.08);color:#9DF3C2}
+.msg.bad{border:1px solid rgba(255,123,123,.35);background:rgba(255,80,80,.08);color:#FFB4B4}
+.savebar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  padding:12px 20px;background:rgba(7,11,24,.97);border-top:1px solid var(--line);backdrop-filter:blur(10px)}
+.savebar .state{font-family:var(--body);font-size:13.5px;color:var(--mute);margin-left:auto}
+.savebar.dirty{border-top-color:var(--gold)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--good);box-shadow:0 0 9px var(--good)}
+.dot.warn{background:var(--gold);box-shadow:0 0 9px var(--gold)}
+
+/* photos */
+.ph{border:1px dashed var(--line);border-radius:9px;aspect-ratio:4/3;background:rgba(4,6,15,.6);
+  background-size:cover;background-position:center;position:relative;cursor:pointer;overflow:hidden}
+.ph:hover{border-color:var(--neon)}
+.ph .lab{position:absolute;inset:auto 0 0 0;padding:6px 8px;background:rgba(4,6,15,.8);font-size:11px;
+  font-family:var(--display);color:var(--mute);text-align:center}
+.ph.set .lab{color:var(--neon)}
+.ph .x{position:absolute;top:5px;right:5px;width:22px;height:22px;border-radius:5px;display:none;
+  place-items:center;background:rgba(255,60,60,.85);color:#fff;font-size:13px;border:0;padding:0}
+.ph.set:hover .x{display:grid}
+.strip3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+
+/* roster */
+.rost{display:grid;grid-template-columns:96px repeat(5,1fr);gap:6px;min-width:620px}
+.rh{font-family:var(--display);font-size:12px;font-weight:700;text-align:center;padding:9px 4px;border-radius:7px;
+  background:linear-gradient(180deg,var(--electric),#2A5AE0);color:#fff;text-transform:uppercase}
+.rh.t{background:transparent;border:1px solid var(--line);color:var(--mute)}
+.rl{font-family:var(--display);font-size:11.5px;text-align:center;padding:8px 2px;border-radius:7px;
+  border:1px solid var(--line);background:rgba(63,123,255,.08);display:grid;place-items:center}
+.sl{border:1px dashed var(--line);border-radius:7px;min-height:58px;background:rgba(4,6,15,.4);cursor:pointer;
+  display:grid;place-items:center;padding:5px;gap:3px;text-align:center}
+.sl.on{border:1px solid rgba(37,224,255,.45);background:linear-gradient(180deg,rgba(37,224,255,.14),rgba(37,224,255,.04))}
+.sl .tk{color:var(--neon);font-size:17px;line-height:1}
+.sl input{display:none;padding:3px 4px;font-size:10.5px;text-align:center;border-radius:4px}
+.sl.on input{display:block}
+.scroll{overflow-x:auto;padding-bottom:6px}
+
+@media (max-width:720px){
+  .grid2,.grid3{grid-template-columns:1fr}
+  main{padding:20px 14px 130px}
+  .tabs{top:56px}
+}
+
+</style>
+</head>
+<body>
+
+<!-- sign in / first run -->
+<div class="gate" id="gate" style="display:none">
+  <div class="gatebox">
+    <img src="../assets/iemss-logo.png" alt="">
+    <h1 id="gtitle">IEMSS UTHM site manager</h1>
+    <p id="gsub">Sign in to edit the website.</p>
+    <div class="msg bad" id="gmsg"></div>
+    <label class="f"><span id="glab1">Password</span>
+      <input type="password" id="pw1" autocomplete="current-password"></label>
+    <label class="f" id="pw2wrap" style="display:none"><span>Type it again</span>
+      <input type="password" id="pw2" autocomplete="new-password"></label>
+    <button class="primary" id="gbtn" style="width:100%">Sign in</button>
+    <p class="hint" id="ghint" style="margin-top:16px;text-align:left;display:none">
+      Write it down somewhere safe. If it is lost, the only way back in is to clear the
+      <code>auth</code> entry in Cloudflare&nbsp;&rsaquo;&nbsp;Storage&nbsp;&amp;&nbsp;Databases&nbsp;&rsaquo;&nbsp;KV.</p>
+  </div>
+</div>
+
+<!-- the manager -->
+<div id="shell" style="display:none">
+  <header class="top">
+    <img src="../assets/iemss-logo.png" alt="">
+    <div><b>Site manager</b><small>IEMSS UTHM</small></div>
+    <div class="spacer"></div>
+    <a href="../" target="_blank"><button class="sm">View the website</button></a>
+    <button class="sm" id="signout">Sign out</button>
+  </header>
+
+  <nav class="tabs" id="tabs"></nav>
+
+  <main>
+    <div class="msg" id="msg"></div>
+    <div id="panes"></div>
+  </main>
+
+  <div class="savebar" id="savebar">
+    <button class="primary" id="save">Save and publish</button>
+    <span class="dot" id="dot"></span>
+    <span class="state" id="state">Loading…</span>
+  </div>
+</div>
+
+<script src="app.js?v=3"></script>
+</body>
+</html>

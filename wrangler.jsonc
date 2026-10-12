@@ -1,0 +1,37 @@
+{
+  // ────────────────────────────────────────────────────────────────
+  //  IEMSS UTHM website — Cloudflare Worker configuration
+  //
+  //  ONE THING TO FILL IN: the KV namespace id, down at the bottom.
+  //  SETUP.md step 3 shows where to find it.
+  // ────────────────────────────────────────────────────────────────
+
+  "$schema": "node_modules/wrangler/config-schema.json",
+
+  // Must match the project name in Cloudflare.
+  "name": "iem-uthm-student-section",
+
+  "main": "src/index.js",
+  "compatibility_date": "2025-01-01",
+
+  // The website's files. The Worker runs first so it can serve a photo
+  // or content that was changed through the site manager.
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+
+  // Where the site manager saves everything.
+  // Replace PASTE_YOUR_KV_NAMESPACE_ID_HERE with the id Cloudflare gives you.
+  "kv_namespaces": [
+    {
+      "binding": "SITE",
+      "id": "PASTE_YOUR_KV_NAMESPACE_ID_HERE"
+    }
+  ],
+
+  "observability": {
+    "enabled": true
+  }
+}

@@ -1,0 +1,1763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>IEMSS UTHM — IEM Student Section, Universiti Tun Hussein Onn Malaysia</title>
+<meta name="description" content="The Institution of Engineers Malaysia Student Section at UTHM. Membership, events, committee and contact." />
+<link rel="icon" href="assets/iemss-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#04060F; --panel:#0A1224; --panel-2:#0D1730;
+  --line:rgba(64,166,255,.18); --line-soft:rgba(64,166,255,.09);
+  --neon:#25E0FF; --electric:#3F7BFF; --gold:#D6B26A; --signal:#FFC44D;
+  --ink:#E4EEFB; --mute:#8195B4;
+  --body:Cambria,"Palatino Linotype","Book Antiqua",Georgia,serif;
+  --display:"Chakra Petch",system-ui,sans-serif;
+  --rail:264px; --r:10px; --ease:cubic-bezier(.2,.8,.2,1);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--void);color:var(--ink);font-family:var(--body);font-size:15.5px;line-height:1.7;-webkit-font-smoothing:antialiased;min-height:100vh}
+h1,h2,h3,h4,.num,.rail-brand b,.nav a,.btn,.tag,.date-chip,.linkrow a,summary,.editbar{font-family:var(--display)}
+h1,h2,h3,h4{margin:0;font-weight:600;letter-spacing:.01em;line-height:1.15}
+p{margin:0 0 .9em}
+a{color:var(--neon);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--neon);outline-offset:3px;border-radius:4px}
+.small{font-size:14px}
+.muted{color:var(--mute)}
+.gold{color:var(--gold)}
+
+/* backdrop */
+.backdrop{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.grid{position:absolute;inset:-60px;
+  background-image:linear-gradient(to right,var(--line-soft) 1px,transparent 1px),linear-gradient(to bottom,var(--line-soft) 1px,transparent 1px);
+  background-size:72px 72px;mask-image:radial-gradient(125% 95% at 68% 0%,#000 8%,transparent 76%);animation:crawl 40s linear infinite}
+@keyframes crawl{to{transform:translate3d(72px,72px,0)}}
+.orb{position:absolute;border-radius:50%;filter:blur(10px)}
+.orb.a{width:900px;height:900px;right:-280px;top:-400px;background:radial-gradient(circle,rgba(63,123,255,.30),transparent 62%);animation:drift1 26s var(--ease) infinite alternate}
+.orb.b{width:620px;height:620px;left:-220px;bottom:-260px;background:radial-gradient(circle,rgba(37,224,255,.16),transparent 64%);animation:drift2 34s var(--ease) infinite alternate}
+.orb.c{width:480px;height:480px;left:44%;top:36%;background:radial-gradient(circle,rgba(214,178,106,.10),transparent 66%);animation:drift3 44s var(--ease) infinite alternate}
+@keyframes drift1{to{transform:translate3d(-130px,110px,0) scale(1.14)}}
+@keyframes drift2{to{transform:translate3d(140px,-90px,0) scale(1.1)}}
+@keyframes drift3{to{transform:translate3d(-180px,-120px,0) scale(1.2)}}
+.beam{position:absolute;opacity:.55}
+.beam.v{width:1px;height:34vh;top:-34vh;background:linear-gradient(to bottom,transparent,var(--neon),transparent);animation:fall linear infinite}
+.beam.h{height:1px;width:26vw;left:-26vw;background:linear-gradient(to right,transparent,var(--electric),transparent);animation:slide linear infinite}
+.beam.gold{background:linear-gradient(to bottom,transparent,var(--gold),transparent);opacity:.4}
+@keyframes fall{to{transform:translateY(140vh)}}
+@keyframes slide{to{transform:translateX(130vw)}}
+
+/* layout */
+.shell{position:relative;z-index:1;display:grid;grid-template-columns:var(--rail) 1fr;min-height:100vh}
+.rail{border-right:1px solid var(--line);background:linear-gradient(180deg,rgba(10,18,36,.92),rgba(4,6,15,.92));backdrop-filter:blur(8px);padding:26px 20px 20px;display:flex;flex-direction:column;gap:28px;position:sticky;top:0;height:100vh}
+.rail-brand{display:flex;align-items:center;gap:12px}
+.mark{width:42px;height:42px;flex:none;border-radius:50%;display:block;object-fit:contain;background:rgba(255,255,255,.96);padding:1px;box-shadow:0 0 0 1px rgba(37,224,255,.35),0 0 22px rgba(37,224,255,.18)}
+.rail-brand b{display:block;font-size:16px;letter-spacing:.02em}
+.rail-brand span{display:block;font-size:12px;color:var(--mute)}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:8px;color:var(--mute);font-size:14.5px;font-weight:500;border:1px solid transparent;transition:color .18s,background .18s,border-color .18s}
+.nav a:hover{color:var(--ink);background:rgba(63,123,255,.08);text-decoration:none}
+.nav a .dot{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.45;flex:none}
+.nav a[aria-current="page"]{color:var(--ink);background:rgba(37,224,255,.09);border-color:var(--line)}
+.nav a[aria-current="page"] .dot{background:var(--neon);opacity:1;box-shadow:0 0 10px var(--neon)}
+.rail-foot{margin-top:auto;font-size:12.5px;color:var(--mute);border-top:1px solid var(--line-soft);padding-top:16px}
+.rail-foot .live{display:flex;align-items:center;gap:8px;color:var(--ink);font-size:13px}
+.pulse{width:7px;height:7px;border-radius:50%;background:#39F27E;box-shadow:0 0 10px #39F27E;animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+.rail-foot a{color:var(--mute)}
+.rail-foot a:hover{color:var(--neon)}
+
+main{min-width:0;padding:0 34px 60px}
+.topbar{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:18px;padding:20px 0 18px;background:linear-gradient(180deg,var(--void) 62%,transparent)}
+.topbar h1{font-size:19px;font-weight:600}
+.topbar .sub{color:var(--mute);font-size:13px;margin-top:2px}
+.topbar .spacer{flex:1}
+.clock{font-family:var(--display);font-size:13px;color:var(--mute);border:1px solid var(--line);border-radius:999px;padding:6px 13px;white-space:nowrap}
+.clock b{color:var(--ink);font-weight:600;letter-spacing:.04em}
+.btn{font-family:var(--display);font-size:13.5px;font-weight:600;letter-spacing:.02em;padding:9px 16px;border-radius:8px;border:1px solid var(--line);background:rgba(63,123,255,.10);color:var(--ink);cursor:pointer;transition:background .18s,border-color .18s,transform .18s}
+.btn:hover{background:rgba(37,224,255,.16);border-color:var(--neon)}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:linear-gradient(180deg,var(--electric),#2A5AE0);border-color:transparent;color:#fff}
+.btn.primary:hover{background:linear-gradient(180deg,#4F8AFF,#3163E8)}
+.btn.ghost{background:transparent}
+.btn.sm{padding:6px 11px;font-size:12.5px}
+.btn.danger{color:#FF9B9B;border-color:rgba(255,120,120,.3);background:rgba(255,80,80,.08)}
+
+.view{display:none}
+.view.on{display:block;animation:viewin .38s var(--ease) both}
+@keyframes viewin{from{opacity:0;transform:translateY(10px)}}
+
+/* hero */
+.hero{position:relative;border:1px solid var(--line);border-radius:14px;overflow:hidden;min-height:430px;display:flex;align-items:flex-end;padding:38px;margin-bottom:22px;background-color:#061127;
+  background-image:linear-gradient(105deg,rgba(4,6,15,.94) 8%,rgba(6,17,39,.78) 46%,rgba(6,17,39,.34) 100%),url("assets/hero.jpg");
+  background-size:cover,cover;background-position:center,center;animation:heroin .8s var(--ease) both}
+@keyframes heroin{from{opacity:0;transform:scale(1.015)}}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(to right,rgba(37,224,255,.07) 1px,transparent 1px),linear-gradient(to bottom,rgba(37,224,255,.07) 1px,transparent 1px);
+  background-size:46px 46px;mask-image:linear-gradient(80deg,transparent 30%,#000 100%)}
+.hero::after{content:"";position:absolute;right:-70px;bottom:-90px;width:420px;height:420px;background:url("assets/iemss-logo.png") center/contain no-repeat;opacity:.07;pointer-events:none;animation:spin 90s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero-in{position:relative;max-width:660px}
+.hero h2{font-family:var(--display);font-size:clamp(30px,4.4vw,52px);font-weight:700;line-height:1.04;letter-spacing:-.015em;color:#fff;text-shadow:0 2px 30px rgba(0,0,0,.55)}
+.hero p{margin:16px 0 0;font-size:16.5px;line-height:1.7;color:#C6D8EE;max-width:58ch}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.hero-note{position:relative;margin-top:20px;font-size:13.5px;color:var(--mute);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.hero-note b{color:var(--neon);font-family:var(--display);font-weight:600}
+
+.about{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;margin-bottom:22px}
+.about .card{padding:26px}
+.about h2{font-size:22px;margin-bottom:14px}
+.about p{font-size:15px;color:#B9CBE4;max-width:60ch}
+.about p:last-of-type{margin-bottom:0}
+.frame{position:relative;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;min-height:260px}
+
+/* deck */
+.deck{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:start}
+.panel{position:relative;background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--line);border-radius:var(--r);padding:18px 18px 20px;grid-column:span 2;min-width:0;animation:deal .55s var(--ease) both;animation-delay:calc(var(--i,0) * 70ms)}
+@keyframes deal{from{opacity:0;transform:translateY(16px) scale(.985)}}
+.panel::before,.panel::after{content:"";position:absolute;width:13px;height:13px;border:1px solid var(--neon);opacity:.5;pointer-events:none}
+.panel::before{top:-1px;left:-1px;border-right:0;border-bottom:0;border-radius:var(--r) 0 0 0}
+.panel::after{bottom:-1px;right:-1px;border-left:0;border-top:0;border-radius:0 0 var(--r) 0}
+.panel.w4{grid-column:span 4}
+.p-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.p-head h3{font-size:14.5px;font-weight:600;letter-spacing:.03em}
+.p-head .kicker{font-size:12px;color:var(--mute);margin-left:auto;text-align:right}
+.grip{width:24px;height:24px;flex:none;display:grid;place-items:center;cursor:grab;background:none;border:1px solid transparent;border-radius:6px;color:var(--mute);touch-action:none;transition:color .15s,border-color .15s,background .15s}
+.grip:hover{color:var(--neon);border-color:var(--line);background:rgba(37,224,255,.08)}
+.grip svg{width:12px;height:12px;display:block}
+.lift{z-index:20;cursor:grabbing;border-color:var(--neon) !important;box-shadow:0 24px 60px rgba(0,0,0,.55),0 0 0 1px rgba(37,224,255,.35),0 0 40px rgba(37,224,255,.16)}
+.lift .grip{cursor:grabbing;color:var(--neon)}
+.settle{transition:transform .32s var(--ease)}
+.dragging > *:not(.lift){transition:transform .28s var(--ease)}
+.dragging{cursor:grabbing}
+
+.count{display:flex;gap:20px;flex-wrap:wrap;align-items:flex-end;margin:6px 0 16px}
+.count > div{min-width:62px}
+.count .num{font-family:var(--display);font-size:46px;font-weight:700;line-height:1;color:#fff;font-variant-numeric:tabular-nums}
+.count .lbl{font-size:12px;color:var(--mute);margin-top:6px}
+.count .sep{align-self:center;color:var(--line);font-size:30px;min-width:0}
+.scan{position:absolute;left:0;right:0;top:0;height:1px;overflow:hidden;border-radius:var(--r) var(--r) 0 0}
+.scan i{position:absolute;inset:0;background:linear-gradient(90deg,transparent,var(--neon),transparent);transform:translateX(-100%);animation:scan 4.5s var(--ease) infinite}
+@keyframes scan{0%{transform:translateX(-100%)}60%,100%{transform:translateX(100%)}}
+.event-line{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.event-line strong{font-family:var(--display);font-size:19px;font-weight:600}
+.stat{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.stat .num{font-family:var(--display);font-size:44px;font-weight:700;color:#fff;line-height:1;font-variant-numeric:tabular-nums}
+.stat .of{font-size:13px;color:var(--neon);font-family:var(--display)}
+
+.rows{display:flex;flex-direction:column}
+.row{display:flex;gap:14px;align-items:center;padding:11px 0;border-top:1px solid var(--line-soft)}
+.row:first-child{border-top:0;padding-top:2px}
+.date-chip{flex:none;width:52px;text-align:center;border:1px solid var(--line);border-radius:8px;padding:6px 0;background:rgba(63,123,255,.07)}
+.date-chip b{display:block;font-size:17px;font-weight:700;line-height:1}
+.date-chip span{display:block;font-size:10.5px;color:var(--mute);margin-top:2px;letter-spacing:.06em}
+.date-chip.tba b{font-size:12px;line-height:1.5}
+.row .meta{min-width:0}
+.row .meta b{display:block;font-family:var(--display);font-size:14.5px;font-weight:600;line-height:1.3}
+.row .meta span{font-size:12.5px;color:var(--mute)}
+.tag{margin-left:auto;flex:none;font-size:11px;font-weight:600;padding:4px 9px;border-radius:999px;border:1px solid var(--line);color:var(--neon);background:rgba(37,224,255,.08)}
+.tag.warm{color:var(--signal);border-color:rgba(255,196,77,.3);background:rgba(255,196,77,.08)}
+.tag.done{color:var(--mute);background:transparent}
+.tag.tba{color:var(--gold);border-color:rgba(214,178,106,.3);background:rgba(214,178,106,.07)}
+
+.people{display:flex;flex-direction:column;gap:10px}
+.person{display:flex;align-items:center;gap:11px}
+.av{width:32px;height:32px;flex:none;border-radius:7px;border:1px solid var(--line);display:grid;place-items:center;font-family:var(--display);font-size:11px;font-weight:600;color:var(--neon);background:rgba(37,224,255,.07)}
+.person .who{min-width:0}
+.person .who b{display:block;font-size:13.5px;font-weight:600;font-family:var(--display);line-height:1.25}
+.person .who span{font-size:12px;color:var(--mute)}
+
+.page{max-width:1020px}
+.lede{font-size:17px;color:#C5D6EC;max-width:64ch;margin-bottom:26px;line-height:1.75}
+.section{margin:34px 0}
+.section > h2{font-size:18px;margin-bottom:14px}
+.card{background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--line);border-radius:var(--r);padding:20px}
+.cards{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.cards.one{grid-template-columns:1fr;gap:16px}
+.card h3{font-size:16px}
+.card > p:last-child{margin-bottom:0}
+.steps{counter-reset:s;display:grid;gap:12px;padding:0;margin:0;list-style:none}
+.steps li{counter-increment:s;position:relative;padding:14px 18px 14px 56px;border:1px solid var(--line);border-radius:var(--r);background:rgba(13,23,48,.6)}
+.steps li::before{content:counter(s,decimal-leading-zero);position:absolute;left:18px;top:15px;font-family:var(--display);font-weight:700;color:var(--neon);font-size:15px}
+.steps b{display:block;font-family:var(--display);font-size:15px;font-weight:600;margin-bottom:2px}
+.steps span{font-size:14px;color:var(--mute)}
+
+.shot{position:relative;border-radius:8px;border:1px solid var(--line);overflow:hidden;background-color:#0A1830;background-size:cover;background-position:center;
+  background-image:repeating-linear-gradient(135deg,rgba(63,123,255,.07) 0 10px,transparent 10px 20px);aspect-ratio:4/3}
+.shot.missing::after{content:attr(data-file);position:absolute;left:0;right:0;bottom:0;padding:6px 8px;font-family:var(--display);font-size:10.5px;color:var(--mute);background:rgba(4,6,15,.72);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.shot.missing::before{content:"";position:absolute;left:50%;top:44%;width:22px;height:18px;transform:translate(-50%,-50%);border:1px solid var(--line);border-radius:3px;box-shadow:0 -4px 0 -3px var(--line) inset}
+.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+
+.arc{border:1px solid var(--line);border-radius:var(--r);background:linear-gradient(180deg,var(--panel-2),var(--panel));margin-bottom:10px;overflow:hidden}
+.arc summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;gap:14px;align-items:center;transition:background .18s}
+.arc summary::-webkit-details-marker{display:none}
+.arc summary:hover{background:rgba(63,123,255,.07)}
+.arc .ti{min-width:0;flex:1}
+.arc .ti b{display:block;font-family:var(--display);font-size:14.8px;font-weight:600;line-height:1.3}
+.arc .ti span{font-size:12.5px;color:var(--mute)}
+.arc .chev{flex:none;width:9px;height:9px;border-right:1.5px solid var(--mute);border-bottom:1.5px solid var(--mute);transform:rotate(45deg);transition:transform .25s var(--ease),border-color .18s;margin-right:4px}
+.arc[open] .chev{transform:rotate(225deg);border-color:var(--neon)}
+.arc .body{padding:0 16px 16px;animation:open .3s var(--ease) both}
+@keyframes open{from{opacity:0;transform:translateY(-6px)}}
+.arc .strip{margin-top:0}
+
+.chart{display:grid;justify-items:center;padding:8px 0}
+.node{border:1px solid var(--line);border-radius:var(--r);padding:11px 16px;text-align:center;min-width:180px;background:linear-gradient(180deg,var(--panel-2),var(--panel));position:relative}
+.node b{display:block;font-family:var(--display);font-size:13.5px;font-weight:600;line-height:1.3}
+.node span{font-size:12px;color:var(--mute)}
+.node.top{border-color:rgba(37,224,255,.45);box-shadow:0 0 30px rgba(37,224,255,.12)}
+.node.gold-node{border-color:rgba(214,178,106,.4)}
+.node.gold-node span{color:var(--gold)}
+.tier{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;position:relative;padding-top:28px;width:100%}
+.tier::before{content:"";position:absolute;top:0;left:50%;width:1px;height:28px;background:var(--line)}
+.dept{border:1px solid var(--line);border-radius:var(--r);padding:16px;background:rgba(13,23,48,.55)}
+.dept h3{font-size:14.5px;margin-bottom:4px}
+.dept .hod{font-size:12px;color:var(--neon);font-family:var(--display);letter-spacing:.04em;margin-bottom:12px}
+.dept ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px}
+.dept li{font-size:13.5px;color:#B9CBE4;padding-left:14px;position:relative}
+.dept li::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:1px;background:var(--line)}
+.dept li.lead{color:var(--ink);font-family:var(--display);font-weight:600;font-size:14px}
+
+.field{display:block;margin-bottom:14px}
+.field span{display:block;font-size:13px;color:var(--mute);margin-bottom:6px}
+input,textarea,select{width:100%;background:rgba(4,6,15,.7);border:1px solid var(--line);border-radius:8px;color:var(--ink);padding:11px 13px;font-family:var(--body);font-size:15px;transition:border-color .18s,box-shadow .18s}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--neon);box-shadow:0 0 0 3px rgba(37,224,255,.14)}
+textarea{min-height:120px;resize:vertical}
+.split{display:grid;gap:22px;grid-template-columns:1.15fr .85fr;align-items:start}
+.linkrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.linkrow a{font-size:13.5px;font-weight:600;padding:9px 15px;border-radius:8px;border:1px solid var(--line);color:var(--ink);background:rgba(63,123,255,.08);text-decoration:none;transition:border-color .18s,background .18s}
+.linkrow a:hover{border-color:var(--neon);background:rgba(37,224,255,.14);text-decoration:none}
+.note{border:1px solid rgba(214,178,106,.34);background:rgba(214,178,106,.07);border-radius:var(--r);padding:18px 20px}
+.note b{font-family:var(--display);font-size:15.5px;display:block;margin-bottom:6px;color:#E8D5A9}
+.foot{margin-top:44px;padding-top:18px;border-top:1px solid var(--line-soft);color:var(--mute);font-size:13px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.foot a{color:var(--mute)}
+.foot a:hover{color:var(--neon)}
+
+
+/* ============ editor ============ */
+.editbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;align-items:center;gap:12px;flex-wrap:wrap;
+  padding:12px 20px;background:rgba(6,12,26,.96);border-top:1px solid var(--neon);backdrop-filter:blur(10px);
+  box-shadow:0 -14px 40px rgba(0,0,0,.5)}
+body.editing .editbar{display:flex}
+body.editing{padding-bottom:78px}
+.editbar .badge{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--neon);letter-spacing:.04em}
+.editbar .hint{font-family:var(--body);font-size:13px;color:var(--mute);margin-left:auto}
+#saveState{font-family:var(--body);font-size:13px;color:var(--mute)}
+
+body.editing [data-bind]{outline:1px dashed rgba(37,224,255,.35);outline-offset:3px;border-radius:3px;cursor:text;min-width:24px;display:inline-block}
+body.editing p[data-bind],body.editing .lede[data-bind]{display:block}
+body.editing [data-bind]:hover{outline-color:var(--neon);background:rgba(37,224,255,.06)}
+body.editing [data-bind]:focus{outline:2px solid var(--neon);background:rgba(37,224,255,.09)}
+body.editing .arc summary{cursor:default}
+.ed{display:none}
+body.editing .ed{display:flex;align-items:center;gap:6px}
+body.editing .ed.block{display:block}
+.rowtools{display:none;gap:6px;align-items:center;margin-left:8px;flex:none}
+body.editing .rowtools{display:flex}
+.minigrip{width:22px;height:22px;display:grid;place-items:center;cursor:grab;color:var(--mute);border:1px solid var(--line);border-radius:5px;background:rgba(37,224,255,.06);touch-action:none;flex:none}
+.minigrip:hover{color:var(--neon);border-color:var(--neon)}
+.minigrip svg{width:11px;height:11px}
+.xbtn{width:22px;height:22px;display:grid;place-items:center;cursor:pointer;color:#FF9B9B;border:1px solid rgba(255,120,120,.3);border-radius:5px;background:rgba(255,80,80,.08);font-size:13px;line-height:1;font-family:var(--display);flex:none}
+.xbtn:hover{background:rgba(255,80,80,.2)}
+.addrow{margin-top:12px}
+.photoslug{display:none;margin-top:10px;align-items:center;gap:8px;font-size:12.5px;color:var(--mute)}
+body.editing .photoslug{display:flex}
+.photoslug code{font-family:var(--display);color:var(--neon)}
+
+
+/* ============ duty roster ============ */
+.roster-wrap{overflow-x:auto;padding-bottom:6px}
+.roster{display:grid;grid-template-columns:104px repeat(5,minmax(120px,1fr));gap:6px;min-width:700px}
+.rhead{font-family:var(--display);font-size:12.5px;font-weight:700;letter-spacing:.06em;text-align:center;padding:11px 6px;border-radius:8px;background:linear-gradient(180deg,var(--electric),#2A5AE0);color:#fff;text-transform:uppercase}
+.rhead.time{background:transparent;border:1px solid var(--line);color:var(--mute)}
+.rtime{font-family:var(--display);font-size:12px;text-align:center;padding:10px 4px;border-radius:8px;border:1px solid var(--line);background:rgba(63,123,255,.10);display:flex;align-items:center;justify-content:center;line-height:1.25}
+.slot{min-height:58px;border-radius:8px;border:1px dashed var(--line-soft);background:rgba(4,6,15,.35);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:7px;transition:border-color .2s,background .2s}
+.slot.open{border:1px solid rgba(37,224,255,.35);background:linear-gradient(180deg,rgba(37,224,255,.13),rgba(37,224,255,.04))}
+.slot .tick{width:22px;height:22px;color:var(--neon);flex:none}
+.slot .nm{font-family:var(--display);font-size:11px;color:var(--ink);text-align:center;line-height:1.2}
+.slot.now{border-color:var(--signal);background:linear-gradient(180deg,rgba(255,196,77,.15),rgba(255,196,77,.04))}
+.slot.now .tick{color:var(--signal)}
+body.editing .slot{cursor:pointer}
+body.editing .slot:hover{border-color:var(--neon);background:rgba(37,224,255,.10)}
+.nminput{font-size:11px;padding:4px 6px;text-align:center;font-family:var(--display)}
+.openbar{display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:var(--r);border:1px solid var(--line);background:rgba(13,23,48,.6);margin-bottom:18px;font-size:14px}
+.openbar .lamp{width:9px;height:9px;border-radius:50%;flex:none;background:var(--mute)}
+.openbar.isopen{border-color:rgba(57,242,126,.4);background:rgba(57,242,126,.07)}
+.openbar.isopen .lamp{background:#39F27E;box-shadow:0 0 10px #39F27E;animation:pulse 2.4s infinite}
+.openbar b{font-family:var(--display)}
+.today{display:flex;flex-direction:column;gap:6px;margin-top:4px}
+.today .t{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--mute)}
+.today .t.on{color:var(--ink)}
+.today .t i{width:7px;height:7px;border-radius:50%;background:var(--line);flex:none}
+.today .t.on i{background:var(--neon);box-shadow:0 0 8px var(--neon)}
+.today .t.now i{background:var(--signal);box-shadow:0 0 8px var(--signal)}
+.formmsg{margin-top:12px;font-size:14px;display:none}
+.formmsg.show{display:block}
+.formmsg.good{color:#8FE9B4}
+.formmsg.bad{color:#FF9B9B}
+
+@media (max-width:1080px){.deck{grid-template-columns:repeat(2,1fr)}.panel.w4{grid-column:span 2}.split,.about{grid-template-columns:1fr}}
+@media (max-width:820px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:static;height:auto;flex-direction:row;align-items:center;gap:14px;overflow-x:auto;padding:14px 16px;border-right:0;border-bottom:1px solid var(--line)}
+  .rail-brand span,.rail-foot{display:none}
+  .nav{flex-direction:row;gap:4px}
+  .nav a{white-space:nowrap;padding:8px 11px;font-size:13.5px}
+  .nav a .dot{display:none}
+  main{padding:0 16px 44px}
+  .deck{grid-template-columns:1fr}
+  .panel,.panel.w4{grid-column:span 1}
+  .count .num{font-size:38px}
+  .hero{min-height:340px;padding:22px;border-radius:10px}
+  .hero::after{width:260px;right:-60px;bottom:-70px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+  .beam{display:none}
+}
+</style>
+</head>
+<body>
+<div class="backdrop" aria-hidden="true">
+  <div class="grid"></div><div class="orb a"></div><div class="orb b"></div><div class="orb c"></div><div id="beams"></div>
+</div>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="rail-brand">
+      <img class="mark" src="assets/iemss-logo.png" alt="IEMSS UTHM logo" width="42" height="42">
+      <div><b>IEMSS UTHM</b><span>IEM Student Section</span></div>
+    </div>
+    <nav class="nav" aria-label="Main">
+      <a href="#home" data-view="home" aria-current="page"><i class="dot"></i>Home</a>
+      <a href="#membership" data-view="membership"><i class="dot"></i>Student membership</a>
+      <a href="#upcoming" data-view="upcoming"><i class="dot"></i>Upcoming events</a>
+      <a href="#past" data-view="past"><i class="dot"></i>Past events</a>
+      <a href="#office" data-view="office"><i class="dot"></i>Office duty roster</a>
+      <a href="#org" data-view="org"><i class="dot"></i>Organisation chart</a>
+      <a href="#contact" data-view="contact"><i class="dot"></i>Contact us</a>
+    </nav>
+    <div class="rail-foot">
+      <div class="live"><i class="pulse"></i> <span data-bind="session"></span></div>
+      <div style="margin-top:8px">B001, B7<br>Universiti Tun Hussein Onn Malaysia</div>
+      <div style="margin-top:10px;display:flex;flex-direction:column;gap:4px">
+        <a id="railIem" target="_blank" rel="noopener">myiem.org.my</a>
+        <a id="railSocials" target="_blank" rel="noopener">All our socials</a>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <header class="topbar">
+      <div>
+        <h1 id="viewTitle">Home</h1>
+        <div class="sub" id="viewSub">Institution of Engineers Malaysia Student Section, UTHM</div>
+      </div>
+      <div class="spacer"></div>
+      <div class="clock">Batu Pahat <b id="clock">--:--</b></div>
+      <button class="btn primary" data-view="membership" type="button">Join IEMSS</button>
+    </header>
+
+    <section class="view on" id="view-home">
+      <section class="hero">
+        <div class="hero-in">
+          <h2 data-bind="hero.title"></h2>
+          <p data-bind="hero.body"></p>
+          <div class="hero-cta">
+            <button class="btn primary" data-view="membership" type="button">Join IEMSS</button>
+            <button class="btn" data-view="upcoming" type="button">Explore our events</button>
+          </div>
+          <div class="hero-note">Next event in <b id="heroDays">--</b> days — <span id="heroNext"></span></div>
+        </div>
+      </section>
+
+      <section class="about">
+        <div class="card">
+          <h2 data-bind="about.heading"></h2>
+          <p data-bind="about.p1"></p>
+          <p data-bind="about.p2"></p>
+          <div class="linkrow">
+            <a id="aboutIem" target="_blank" rel="noopener">About IEM Malaysia</a>
+            <a id="aboutSocials" target="_blank" rel="noopener">Follow us</a>
+          </div>
+        </div>
+        <div class="frame shot" data-file="assets/committee.jpg" style="aspect-ratio:auto;background-image:url('assets/committee.jpg')"></div>
+      </section>
+
+      <div class="deck" id="deck"></div>
+    </section>
+
+    <section class="view" id="view-membership"><div class="page" id="membershipPage"></div></section>
+    <section class="view" id="view-upcoming"><div class="page" id="upcomingPage"></div></section>
+    <section class="view" id="view-past"><div class="page" id="pastPage"></div></section>
+    <section class="view" id="view-office"><div class="page" id="officePage"></div></section>
+    <section class="view" id="view-org"><div class="page" id="orgPage"></div></section>
+    <section class="view" id="view-contact"><div class="page" id="contactPage"></div></section>
+
+    <footer class="foot">
+      <span>IEM Student Section, UTHM</span>
+      <span data-bind="session"></span>
+      <a id="footIem" target="_blank" rel="noopener">myiem.org.my</a>
+      <a id="footSocials" target="_blank" rel="noopener">Socials</a>
+      <a id="footCard" target="_blank" rel="noopener">Card status</a>
+      <span>Maintained by the IEMSS UTHM IT department</span>
+    </footer>
+  </main>
+</div>
+
+<div class="editbar">
+  <span class="badge"><i class="pulse"></i> EDIT MODE</span>
+  <button class="btn primary sm" id="edExport" type="button">Download content.js</button>
+  <button class="btn sm" id="edImport" type="button">Load a content.js</button>
+  <button class="btn sm danger" id="edDiscard" type="button">Discard my changes</button>
+  <button class="btn ghost sm" id="edExit" type="button">Exit edit mode</button>
+  <input type="file" id="edFile" accept=".js,.json" style="display:none">
+  <span id="saveState"></span>
+  <span class="hint">Click any text to rewrite it. Drag the grip handles to reorder.</span>
+</div>
+
+<script>
+/* Safety-net copy of the site content.
+   The live content lives in data/content.json, written by the site manager
+   at /admin/. This copy is only used if that file cannot be read. */
+window.SITE = {
+  "session": "Session 2026 / 2027",
+  "hero": {
+    "title": "Engineering the Future, Together.",
+    "body": "Welcome to the Institution of Engineers Malaysia Student Section (IEMSS) at Universiti Tun Hussein Onn Malaysia. We bridge the gap between academic learning and professional excellence."
+  },
+  "about": {
+    "heading": "Who we are",
+    "p1": "At IEMSS-UTHM, we are more than just a student organisation; we are a launchpad for future innovators. Our mission is to cultivate a vibrant engineering culture on campus by giving students across mechanical, manufacturing and every other engineering discipline the tools, network and experiences they need to thrive in the modern industrial landscape.",
+    "p2": "From technical design sprints to large-scale campus festivals, we empower students to step out of the classroom and into the real world of engineering."
+  },
+  "members": {
+    "count": 4228,
+    "caption": "and still counting",
+    "blurb": "Membership stays active until you graduate. Cards are collected at the IEMSS booth."
+  },
+  "next": {
+    "name": "Welcoming Freshies Night: Together We Thrive",
+    "when": "2026-10-10T20:00:00+08:00",
+    "label": "Saturday, 10 October 2026",
+    "blurb": "The opening night of the session for new engineering students. Details and registration go out through our social channels closer to the date."
+  },
+  "regDay": {
+    "name": "IEM Student Section UTHM Membership Registration Day",
+    "when": "2026-10-17T09:00:00+08:00",
+    "label": "Saturday, 17 October 2026 · Dewan Kuliah A, G3",
+    "blurb": "Bring your matric card. Committee members will be at the hall to register you on the spot and answer questions about IEM."
+  },
+  "contact": {
+    "email": "iemssuthm@gmail.com",
+    "office": "IEMSS office, B001, B7",
+    "address": "UTHM, 86400 Parit Raja, Batu Pahat, Johor",
+    "socials": "https://linktr.ee/iemss_uthm",
+    "iem": "https://www.myiem.org.my",
+    "cardStatus": "https://iemssuthm-membership.netlify.app/",
+    "cardStatusLabel": "Click to check your membership card status",
+    "blurb": "Questions about membership, collaborations or sponsorship — the secretariat replies within two working days."
+  },
+  "membership": {
+    "lede": "IEM student membership connects you to the national body of engineers while you are still studying — talks, site visits, competitions and a professional record that starts before your first job.",
+    "noteTitle": "UTHM engineering students, local intake: you have already paid.",
+    "noteBody": "The RM50 IEM student subscription is bundled into your first-semester fees. You do not pay it a second time — just register and collect your card.",
+    "costBody": "For everyone else it is a one-off RM50, valid until you graduate. That single payment covers every IEMSS programme we run — site visits, workshops, talks, competitions — with no per-event fee. The equivalent technical events outside campus routinely charge hundreds to thousands of ringgit each.",
+    "benefits": [
+      {
+        "title": "Every programme, no extra fee",
+        "body": "Workshops, competitions and site visits are free to members for the whole of your degree."
+      },
+      {
+        "title": "IEM journals and bulletins",
+        "body": "Full digital access through your IEM member account."
+      },
+      {
+        "title": "A head start on graduate membership",
+        "body": "Your student record carries over when you convert after graduation."
+      },
+      {
+        "title": "National-level competitions",
+        "body": "Entry to IEM-run student competitions at branch and national level."
+      }
+    ],
+    "steps": [
+      {
+        "title": "Come to Membership Registration Day",
+        "body": "17 October 2026, Dewan Kuliah A, G3. Or register online at myiem.org.my any time."
+      },
+      {
+        "title": "Bring your matric card and student details",
+        "body": "Committee members verify your faculty and programme on the spot."
+      },
+      {
+        "title": "Settle the subscription if it applies to you",
+        "body": "Local UTHM engineering students are already covered by first-semester fees."
+      },
+      {
+        "title": "Collect your card at the IEMSS booth",
+        "body": "Check the collection status page before you come down."
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Can first-year students join?",
+        "a": "Yes. Any UTHM student enrolled in an engineering or engineering technology programme is eligible."
+      },
+      {
+        "q": "I lost my card. What now?",
+        "a": "Email iemssuthm@gmail.com with your membership number. Replacement takes about three weeks."
+      }
+    ]
+  },
+  "upcoming": [
+    {
+      "name": "Welcoming Freshies Night: Together We Thrive",
+      "date": "2026-10-10",
+      "label": "Saturday",
+      "venue": ""
+    },
+    {
+      "name": "NEESIC 2.0 (Poster Competition)",
+      "date": "2026-10-10",
+      "label": "10 October – 10 November 2026",
+      "venue": ""
+    },
+    {
+      "name": "Membership Registration Day",
+      "date": "2026-10-17",
+      "label": "Saturday",
+      "venue": "Dewan Kuliah A, G3"
+    },
+    {
+      "name": "The IEMSS-UTHM & TalentCorp Career Bootcamp",
+      "date": "2026-10-31",
+      "label": "Saturday",
+      "venue": ""
+    },
+    {
+      "name": "Technical Talk",
+      "date": "2026-11-28",
+      "label": "Saturday",
+      "venue": ""
+    },
+    {
+      "name": "Technical Visit",
+      "date": "2026-12-14",
+      "label": "",
+      "venue": ""
+    }
+  ],
+  "upcomingTBA": [
+    {
+      "name": "STEM Program"
+    },
+    {
+      "name": "IEM Student Section UTHM Membership Registration Day (Online)"
+    },
+    {
+      "name": "Technical Visit 2.0"
+    },
+    {
+      "name": "Engineer Night Run (Glow Run)"
+    },
+    {
+      "name": "Annual Grand Dinner"
+    },
+    {
+      "name": "Annual Grand Meeting"
+    }
+  ],
+  "past": [
+    {
+      "year": "2026",
+      "name": "Expedition to ENGINEER & MARVEX 2026",
+      "date": "24 September 2026",
+      "venue": "KLCC",
+      "photos": "MARVEX2026"
+    },
+    {
+      "year": "2026",
+      "name": "IEM YES NATIONAL SUMMIT 2026",
+      "date": "30 July 2026 - 2 August",
+      "venue": "Trove Hotel,Johor Bahru",
+      "photos": "NS2026"
+    },
+    {
+      "year": "2026",
+      "name": "Annual Grand Meeting 2025/2026",
+      "date": "19 June 2026",
+      "venue": "Auditorium Al-Jazari, PTTA",
+      "photos": "grand-meeting"
+    },
+    {
+      "year": "2026",
+      "name": "Annual Grand Dinner 2026",
+      "date": "13 June 2026",
+      "venue": "Dewan F2 Bawah",
+      "photos": "grand-dinner"
+    },
+    {
+      "year": "2026",
+      "name": "Roadmap as Future Engineer for Industrial Revolution 4.0",
+      "date": "30 May 2026",
+      "venue": "Online (Google Meet)",
+      "photos": "roadmap-ir4"
+    },
+    {
+      "year": "2026",
+      "name": "Engineering Color Run",
+      "date": "23 May 2026",
+      "venue": "UTHM",
+      "photos": "color-run"
+    },
+    {
+      "year": "2026",
+      "name": "IEMSS UTHM x SJK(C) Kong Nan: The Green Hero Project",
+      "date": "22 May 2026",
+      "venue": "SJK(C) Kong Nan",
+      "photos": "green-hero"
+    },
+    {
+      "year": "2026",
+      "name": "National Energy Efficiency & Sustainable Innovation Competition (NEESIC)",
+      "date": "4 – 18 May 2026",
+      "venue": "",
+      "photos": "neesic"
+    },
+    {
+      "year": "2026",
+      "name": "IEM Student Section UTHM Membership Registration Day (Online)",
+      "date": "16 May 2026",
+      "venue": "Online (Google Meet)",
+      "photos": "membership-online"
+    },
+    {
+      "year": "2026",
+      "name": "Industrial Talk: From Student to Professional",
+      "date": "9 May 2026",
+      "venue": "Online (Google Meet)",
+      "photos": "student-to-pro"
+    },
+    {
+      "year": "2026",
+      "name": "Professional Talk on Career Bootcamp & IEM Membership Registration",
+      "date": "23 April 2026",
+      "venue": "Pagoh",
+      "photos": "membership-apr"
+    },
+    {
+      "year": "2026",
+      "name": "Technical Visit to CelcomDigi AI Experience (AiX)",
+      "date": "20 April 2026",
+      "venue": "CelcomDigi Hub, Subang Jaya",
+      "photos": "celcomdigi"
+    },
+    {
+      "year": "2026",
+      "name": "Renewable Energy Industrial Talk",
+      "date": "17 April 2026",
+      "venue": "Dewan Kuliah 3, B2",
+      "photos": "renewable-talk"
+    },
+    {
+      "year": "2026",
+      "name": "Resume Clinic: Building a Professional Resume",
+      "date": "17 April 2026",
+      "venue": "Bilik Kuliah E5, G3",
+      "photos": "resume-clinic"
+    },
+    {
+      "year": "2026",
+      "name": "Safety & Health Talk",
+      "date": "2 April 2026",
+      "venue": "Online (Google Meet)",
+      "photos": "safety-talk"
+    },
+    {
+      "year": "2026",
+      "name": "AutoCAD Competition: Drafting the Future, Precision in Every Dimension",
+      "date": "11 – 17 March 2026",
+      "venue": "Online (Google Meet)",
+      "photos": "autocad-comp"
+    },
+    {
+      "year": "2026",
+      "name": "AutoCAD Workshop: Professional Drafting & Technical Documentation",
+      "date": "9 March 2026",
+      "venue": "Online (Google Meet)",
+      "photos": "autocad-workshop"
+    },
+    {
+      "year": "2026",
+      "name": "SolidWorks Competition: The SolidWorks Design Sprint Challenge",
+      "date": "25 February 2026",
+      "venue": "Online (Google Meet)",
+      "photos": "solidworks-comp"
+    },
+    {
+      "year": "2026",
+      "name": "SolidWorks Workshop: Masterclass Concept to Creation",
+      "date": "23 February 2026",
+      "venue": "Online (Google Meet)",
+      "photos": "solidworks-workshop"
+    },
+    {
+      "year": "2026",
+      "name": "Membership Registration Day & Industry Knowledge Sharing with Cytron Technologies",
+      "date": "16 January 2026",
+      "venue": "",
+      "photos": "cytron"
+    },
+    {
+      "year": "2025",
+      "name": "Career Talk: Engineering Your Future",
+      "date": "19 December 2025",
+      "venue": "Online (Google Meet)",
+      "photos": "career-talk"
+    },
+    {
+      "year": "2025",
+      "name": "Forum: Aligning Expectations for Future Graduates",
+      "date": "5 December 2025",
+      "venue": "Dewan Kuliah 1, B2",
+      "photos": "forum-expectations"
+    },
+    {
+      "year": "2025",
+      "name": "Membership Registration Day",
+      "date": "29 November 2025",
+      "venue": "Dewan Kuliah A, G3",
+      "photos": "membership-nov"
+    },
+    {
+      "year": "2025",
+      "name": "FreeRTOS Workshop",
+      "date": "14 November 2025",
+      "venue": "Innovation Lab, G1",
+      "photos": "freertos"
+    },
+    {
+      "year": "2025",
+      "name": "Empowering Future Engineers: UPaL Guide to Professional Certification",
+      "date": "29 October 2025",
+      "venue": "Online (Microsoft Teams)",
+      "photos": "upal"
+    },
+    {
+      "year": "2025",
+      "name": "Welcoming Night 25/26",
+      "date": "17 October 2025",
+      "venue": "BS B1, B6",
+      "photos": "welcoming-night"
+    },
+    {
+      "year": "2025",
+      "name": "IEMUMPSA x IEMUTHM Student Section Green Energy Seminar & Site Visit",
+      "date": "11 January 2025",
+      "venue": "UMPSA, Pahang",
+      "photos": "green-energy"
+    }
+  ],
+  "org": {
+    "facultyAdvisors": [
+      {
+        "name": "Prof. Madya Ir. Ts. Dr. Bukhari bin Manshoor"
+      },
+      {
+        "name": "Prof. Madya Ir. Dr. Chia Kim Seng"
+      },
+      {
+        "name": "Ts. Nur Azliza binti Ahmad"
+      }
+    ],
+    "studentAdvisors": [
+      {
+        "name": "Kevinraj Gaunder Selvaraju"
+      },
+      {
+        "name": "Thumilen Ravi"
+      }
+    ],
+    "high": [
+      {
+        "role": "Chairperson",
+        "name": "Navina Shubaschander"
+      },
+      {
+        "role": "Deputy Chairperson",
+        "name": "Puteri Siti Hannani binti Ahmad Hazfizi"
+      },
+      {
+        "role": "Secretary",
+        "name": "Rhydian Woon Jia Quan"
+      },
+      {
+        "role": "Treasurer",
+        "name": "Koh Guan Ming"
+      }
+    ],
+    "departments": [
+      {
+        "name": "Multimedia and Publicity",
+        "hod": "Teo Chi San",
+        "members": [
+          {
+            "name": "Nur Najwa Balqis binti Mohd Rashid"
+          },
+          {
+            "name": "Charmaine Ng"
+          },
+          {
+            "name": "Lim Le Jeff"
+          },
+          {
+            "name": "Muhammad Irfan bin Mahadzir"
+          }
+        ]
+      },
+      {
+        "name": "Professional & Development",
+        "hod": "Richen Leo Banus",
+        "members": [
+          {
+            "name": "Nurin Atikah binti Nor Azian"
+          },
+          {
+            "name": "Omer Abozaid Khalifa Musa"
+          }
+        ]
+      },
+      {
+        "name": "Student Affair",
+        "hod": "Kok Ming Xuan",
+        "members": [
+          {
+            "name": "Mayrna Erna Joseph"
+          },
+          {
+            "name": "Awab Abdalbadee Mohammedalhassan Siralkhatim"
+          },
+          {
+            "name": "Yeo Ai Xin"
+          }
+        ]
+      },
+      {
+        "name": "External Affair",
+        "hod": "Danial Ariff bin Faiz",
+        "members": [
+          {
+            "name": "Teoh Yeong Boon"
+          },
+          {
+            "name": "Nur Aisyah binti Mohamad Nizam"
+          }
+        ]
+      },
+      {
+        "name": "Office Affair",
+        "hod": "Cham Jia Yi",
+        "members": [
+          {
+            "name": "Muhammad Azri bin Azhar"
+          },
+          {
+            "name": "Omer Elmubarak Omer Elhado"
+          }
+        ]
+      },
+      {
+        "name": "Public Relation",
+        "hod": "Naveendran a/l Mail Waganam",
+        "members": [
+          {
+            "name": "Nur Alya Zakirah binti Zulkifli"
+          },
+          {
+            "name": "Deswgy Khalid Mohamed Ahmed"
+          }
+        ]
+      }
+    ]
+  },
+  "roster": {
+    "statusTitle": "confirmed for session 2026 / 2027",
+    "status": "The hours below are session's roster.",
+    "note": "Walk in to the IEMSS office at B001, B7 during any ticked hour to collect your membership card, ask about registration, or talk to the committee about anything else. No appointment needed.",
+    "startHour": 9,
+    "days": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "hours": [
+      "9:00 – 10:00",
+      "10:00 – 11:00",
+      "11:00 – 12:00",
+      "12:00 – 1:00",
+      "1:00 – 2:00",
+      "2:00 – 3:00",
+      "3:00 – 4:00"
+    ],
+    "grid": [
+      [
+        false,
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      [
+        "",
+        "",
+        "",
+        false,
+        ""
+      ],
+      [
+        "",
+        "",
+        "",
+        "",
+        false
+      ],
+      [
+        "",
+        "",
+        false,
+        "",
+        ""
+      ],
+      [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    ]
+  },
+  "forms": {
+    "endpoint": "https://script.google.com/macros/s/AKfycbwFzitsq-2r28hBpC82TsEoo24Ob-amB0Ayn7hGNZa1KvJCwN77QK73mS0me6geAzlb/exec",
+    "successMsg": "Thank you — your message is with the secretariat. We usually reply within two working days.",
+    "failMsg": "That did not send. Please email iemssuthm@gmail.com directly."
+  },
+  "deckOrder": [
+    "next",
+    "members",
+    "office",
+    "upcoming",
+    "committee",
+    "recent",
+    "contact"
+  ]
+};
+</script>
+<script>
+(function(){
+"use strict";
+
+/* ---------- state ---------- */
+var DEFAULTS = JSON.parse(JSON.stringify(window.SITE));
+var S = window.SITE;
+var EDIT = false;   /* the in-page editor is retired — editing now lives at /admin/ */
+if(/[?&]edit=1/.test(location.search)){ location.replace("admin/"); }
+var KEY = "iemss-site-draft";
+
+function store(op, val){
+  try{
+    if(op === "get") return localStorage.getItem(KEY);
+    if(op === "set") localStorage.setItem(KEY, val);
+    if(op === "del") localStorage.removeItem(KEY);
+  }catch(e){ return null; }
+}
+var draft = null;   /* browser drafts retired with the in-page editor */
+
+function markSaved(){
+  var el = document.getElementById("saveState");
+  var ok = store("set", JSON.stringify(S)) !== null;
+  if(el) el.textContent = ok === null ? "" : "Draft saved in this browser";
+}
+
+/* ---------- helpers ---------- */
+var MONTHS = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+function esc(s){ return String(s == null ? "" : s).replace(/[&<>"]/g,function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+function get(p){ return p.split(".").reduce(function(o,k){ return o == null ? o : o[k]; }, S); }
+function set(p,v){ var k = p.split("."), last = k.pop(); k.reduce(function(o,x){ return o[x]; }, S)[last] = v; }
+function B(path, tag, extra){
+  return "<" + tag + ' data-bind="' + path + '"' + (extra || "") + ">" + esc(get(path)) + "</" + tag + ">";
+}
+function chip(iso){
+  var d = new Date(iso + "T00:00:00+08:00");
+  if(isNaN(d)) return '<div class="date-chip tba"><b>TBA</b></div>';
+  return '<div class="date-chip"><b>' + String(d.getDate()).padStart(2,"0") + "</b><span>" + MONTHS[d.getMonth()] + "</span></div>";
+}
+function longDate(iso){
+  var d = new Date(iso + "T00:00:00+08:00");
+  return isNaN(d) ? "" : d.toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"});
+}
+function rev(){ return S.rev ? ("?v=" + S.rev) : ""; }
+function calmMotion(){
+  try { return window.matchMedia("(prefers-reduced-motion: reduce)").matches; }
+  catch(e){ return false; }
+}
+function shots(slug){
+  var h = '<div class="strip">';
+  for(var i=1;i<=3;i++){
+    var f = "assets/events/" + slug + "-" + i + ".jpg";
+    h += '<div class="shot" data-file="' + esc(f) + "\" style=\"background-image:url('" + esc(f + rev()) + "')\"></div>";
+  }
+  return h + "</div>";
+}
+var GRIP = '<svg viewBox="0 0 12 12" fill="currentColor"><circle cx="3" cy="2" r="1.2"/><circle cx="9" cy="2" r="1.2"/><circle cx="3" cy="6" r="1.2"/><circle cx="9" cy="6" r="1.2"/><circle cx="3" cy="10" r="1.2"/><circle cx="9" cy="10" r="1.2"/></svg>';
+function tools(list, i){
+  return '<div class="rowtools"><button class="minigrip" aria-label="Drag to reorder">' + GRIP + '</button>' +
+         '<button class="xbtn" data-del="' + list + '" data-i="' + i + '" aria-label="Delete">&times;</button></div>';
+}
+function addBtn(list, label){
+  return '<div class="ed addrow"><button class="btn sm" data-add="' + list + '">+ ' + esc(label) + "</button></div>";
+}
+
+
+/* ---------- roster helpers ---------- */
+var TICK = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.6 L9.6 18.2 L20 5.8"/></svg>';
+function isOpen(v){ return v !== false && v !== null && v !== undefined; }
+function klNow(){ return new Date(new Date().toLocaleString("en-US",{timeZone:"Asia/Kuala_Lumpur"})); }
+/* returns {col, row} of the slot happening right now, or null */
+function nowSlot(){
+  var r = S.roster, d = klNow();
+  var col = d.getDay() - 1;
+  if(col < 0 || col > 4) return null;
+  var row = d.getHours() - (+r.startHour || 9);
+  if(row < 0 || row >= r.hours.length) return null;
+  return { row:row, col:col };
+}
+
+/* ---------- render: deck ---------- */
+var PANELS = {
+  next: function(){
+    return '<article class="panel w4" data-panel="next">' +
+      '<div class="scan"><i></i></div><div class="p-head">' + head("Next event", "next.label") + "</div>" +
+      '<div class="event-line"><strong data-bind="next.name">' + esc(S.next.name) + "</strong>" +
+      '<span class="tag warm">Coming up</span></div>' +
+      countdown("next.when") +
+      '<p class="small muted" style="max-width:66ch;margin:0" data-bind="next.blurb">' + esc(S.next.blurb) + "</p>" +
+      '<div class="ed block" style="margin-top:12px"><label class="small muted">Countdown target ' +
+      '<input data-input="next.when" value="' + esc(S.next.when) + '" style="max-width:280px;display:inline-block;margin-left:8px;width:auto"></label></div>' +
+      "</article>";
+  },
+  members: function(){
+    return '<article class="panel" data-panel="members">' +
+      '<div class="p-head">' + head("Registered members", null) + "</div>" +
+      '<div class="stat"><span class="num" id="memberCount">0</span>' +
+      '<span class="of" data-bind="members.caption">' + esc(S.members.caption) + "</span></div>" +
+      '<div class="ed block" style="margin-top:10px"><label class="small muted">Count ' +
+      '<input data-input="members.count" value="' + esc(S.members.count) + '" style="width:120px;display:inline-block;margin-left:8px"></label></div>' +
+      '<p class="small muted" style="margin:14px 0 0" data-bind="members.blurb">' + esc(S.members.blurb) + "</p>" +
+      '<div class="linkrow" style="margin-top:14px"><a href="#membership" data-view="membership">How to register</a>' +
+      '<a href="' + esc(S.contact.cardStatus) + '" target="_blank" rel="noopener">' + esc(S.contact.cardStatusLabel) + "</a></div></article>";
+  },
+  upcoming: function(){
+    var rows = S.upcoming.slice(0,3).map(function(e){
+      return '<div class="row">' + chip(e.date) + '<div class="meta"><b>' + esc(e.name) + "</b><span>" +
+        esc(e.venue || e.label || "Details to follow") + '</span></div><span class="tag warm">Soon</span></div>';
+    }).join("");
+    return '<article class="panel" data-panel="upcoming"><div class="p-head">' +
+      head("What's coming up", null, (S.upcoming.length + S.upcomingTBA.length) + " planned") + "</div>" +
+      '<div class="rows">' + rows + "</div>" +
+      '<button class="btn" data-view="upcoming" style="margin-top:14px" type="button">See the full calendar</button></article>';
+  },
+  committee: function(){
+    var people = S.org.high.map(function(h){
+      var p = h.name.split(/\s+/);
+      var ini = ((p[0]||"")[0] + ((p[1]||"")[0]||"")).toUpperCase();
+      return '<div class="person"><div class="av">' + esc(ini) + '</div><div class="who"><b>' +
+        esc(h.name) + "</b><span>" + esc(h.role) + "</span></div></div>";
+    }).join("");
+    return '<article class="panel" data-panel="committee"><div class="p-head">' +
+      head("High committee", "session") + '</div><div class="people">' + people + "</div>" +
+      '<button class="btn" data-view="org" style="margin-top:16px" type="button">See full chart</button></article>';
+  },
+  recent: function(){
+    var rows = S.past.slice(0,3).map(function(e){
+      return '<div class="row"><div class="meta"><b>' + esc(e.name) + "</b><span>" + esc(e.date) +
+        '</span></div><span class="tag done">Closed</span></div>';
+    }).join("");
+    return '<article class="panel" data-panel="recent"><div class="p-head">' + head("Recently done", null) + "</div>" +
+      '<div class="rows">' + rows + "</div>" +
+      '<button class="btn" data-view="past" style="margin-top:14px" type="button">Open the archive</button></article>';
+  },
+  office: function(){
+    var r = S.roster, n = nowSlot();
+    var col = klNow().getDay() - 1;
+    var openNow = n && isOpen(r.grid[n.row][n.col]);
+    var today = (col >= 0 && col <= 4) ? r.hours.map(function(h,ri){
+      var v = r.grid[ri][col];
+      if(!isOpen(v)) return "";
+      var isNow = n && n.row === ri;
+      return '<div class="t on' + (isNow ? " now" : "") + '"><i></i>' + esc(h) + (v ? " · " + esc(v) : "") + "</div>";
+    }).filter(Boolean).join("") : "";
+    return '<article class="panel" data-panel="office"><div class="p-head">' +
+      head("Office duty roster", null, r.days[col] || "Weekend") + "</div>" +
+      '<div class="openbar' + (openNow ? " isopen" : "") + '" style="margin-bottom:12px"><i class="lamp"></i>' +
+      (openNow ? "<b>Office open right now</b>" : "<span class=\"muted\">Office closed right now</span>") + "</div>" +
+      (today ? '<div class="today">' + today + "</div>"
+             : '<p class="small muted" style="margin:0">No duty hours today. The office runs Monday to Friday.</p>') +
+      '<button class="btn" data-view="office" style="margin-top:16px" type="button">See the full roster</button></article>';
+  },
+  contact: function(){
+    return '<article class="panel" data-panel="contact"><div class="p-head">' + head("Reach the committee", null) + "</div>" +
+      '<p class="small muted" style="max-width:48ch" data-bind="contact.blurb">' + esc(S.contact.blurb) + "</p>" +
+      '<div class="rows" style="margin-top:6px">' +
+      '<div class="row"><div class="meta"><b>' + B("contact.email","span") + '</b><span>Secretariat email</span></div></div>' +
+      '<div class="row"><div class="meta"><b>' + B("contact.office","span") + '</b><span>IEMSS office</span></div></div>' +
+      "</div>" +
+      '<button class="btn" data-view="contact" style="margin-top:12px" type="button">Send a message</button></article>';
+  }
+};
+function head(title, kickerPath, kickerText){
+  return '<button class="grip" aria-label="Move panel">' + GRIP + "</button><h3>" + esc(title) + "</h3>" +
+    (kickerPath ? '<span class="kicker" data-bind="' + kickerPath + '">' + esc(get(kickerPath)) + "</span>"
+                : (kickerText ? '<span class="kicker">' + esc(kickerText) + "</span>" : ""));
+}
+function countdown(path){
+  return '<div class="count" data-countdown="' + esc(get(path)) + '">' +
+    ["d","h","m","s"].map(function(k,i){
+      return (i ? '<div class="sep">:</div>' : "") +
+        '<div><div class="num" data-c="' + k + '">--</div><div class="lbl">' +
+        {d:"days",h:"hours",m:"minutes",s:"seconds"}[k] + "</div></div>";
+    }).join("") + "</div>";
+}
+function renderDeck(){
+  var deck = document.getElementById("deck");
+  var order = (S.deckOrder || []).filter(function(k){ return PANELS[k]; });
+  Object.keys(PANELS).forEach(function(k){ if(order.indexOf(k) < 0) order.push(k); });
+  deck.innerHTML = order.map(function(k,i){
+    return PANELS[k]().replace('class="panel', 'style="--i:' + i + '" class="panel');
+  }).join("");
+  countUp();
+}
+
+/* ---------- render: membership ---------- */
+function renderMembership(){
+  var m = S.membership;
+  document.getElementById("membershipPage").innerHTML =
+    '<div class="panel w4" style="margin-bottom:26px;animation:none"><div class="scan"><i></i></div>' +
+    '<div class="p-head"><h3>Registration day countdown</h3>' + B("regDay.label", "span", ' class="kicker"') + "</div>" +
+    '<div class="event-line">' + B("regDay.name","strong") + '<span class="tag warm">Walk in</span></div>' +
+    countdown("regDay.when") +
+    B("regDay.blurb", "p", ' class="small muted" style="max-width:66ch;margin:0"') +
+    '<div class="ed block" style="margin-top:12px"><label class="small muted">Countdown target ' +
+    '<input data-input="regDay.when" value="' + esc(S.regDay.when) + '" style="max-width:280px;width:auto;display:inline-block;margin-left:8px"></label></div></div>' +
+
+    B("membership.lede", "p", ' class="lede"') +
+
+    '<div class="section"><h2>What it costs</h2>' +
+    '<div class="note" style="margin-bottom:14px">' + B("membership.noteTitle","b") +
+    B("membership.noteBody","p",' class="small" style="margin:0;color:#DCC79A"') + "</div>" +
+    B("membership.costBody","p",' style="color:#B9CBE4;max-width:66ch"') + "</div>" +
+
+    '<div class="section"><h2>What you get</h2><div class="cards" id="benefitList">' +
+    m.benefits.map(function(b,i){
+      return '<div class="card" data-idx="' + i + '"><div style="display:flex;align-items:flex-start">' +
+        B("membership.benefits." + i + ".title","h3") + tools("membership.benefits", i) + "</div>" +
+        B("membership.benefits." + i + ".body","p",' class="small muted" style="margin:6px 0 0"') + "</div>";
+    }).join("") + "</div>" + addBtn("membership.benefits","Add a benefit") + "</div>" +
+
+    '<div class="section"><h2>How to register</h2><ol class="steps" id="stepList">' +
+    m.steps.map(function(s,i){
+      return '<li data-idx="' + i + '"><div style="display:flex;align-items:flex-start">' +
+        B("membership.steps." + i + ".title","b") + tools("membership.steps", i) + "</div>" +
+        B("membership.steps." + i + ".body","span") + "</li>";
+    }).join("") + "</ol>" + addBtn("membership.steps","Add a step") +
+    '<div class="linkrow"><a href="' + esc(S.contact.iem) + '" target="_blank" rel="noopener">Register at myiem.org.my</a>' +
+    '<a href="' + esc(S.contact.cardStatus) + '" target="_blank" rel="noopener">' + esc(S.contact.cardStatusLabel) + "</a>" +
+    '<a href="#office" data-view="office">Office duty roster</a></div></div>' +
+
+    '<div class="section"><h2>Common questions</h2><div id="faqList">' +
+    m.faqs.map(function(f,i){
+      return '<div class="card" data-idx="' + i + '" style="margin-bottom:12px"><div style="display:flex;align-items:flex-start">' +
+        B("membership.faqs." + i + ".q","h3") + tools("membership.faqs", i) + "</div>" +
+        B("membership.faqs." + i + ".a","p",' class="small muted" style="margin:6px 0 0"') + "</div>";
+    }).join("") + "</div>" + addBtn("membership.faqs","Add a question") + "</div>";
+}
+
+/* ---------- render: upcoming ---------- */
+function renderUpcoming(){
+  document.getElementById("upcomingPage").innerHTML =
+    '<p class="lede">Programmes lined up for this session. Dates and venues may still change — the social channels carry the confirmed details for each one.</p>' +
+    '<div class="section"><h2>Semester 1</h2><div class="cards one" id="upList">' +
+    S.upcoming.map(function(e,i){
+      return '<article class="card" data-idx="' + i + '" style="display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap">' +
+        chip(e.date) + '<div style="flex:1;min-width:240px">' +
+        B("upcoming." + i + ".name","h3") +
+        '<div class="small muted" style="margin:4px 0 0">' + esc(longDate(e.date)) + " · " +
+        B("upcoming." + i + ".label","span") + " · " + B("upcoming." + i + ".venue","span") + "</div>" +
+        '<div class="ed" style="margin-top:8px"><label class="small muted">Date <input data-input="upcoming.' + i +
+        '.date" value="' + esc(e.date) + '" style="width:150px;display:inline-block;margin-left:6px"></label></div>' +
+        "</div>" + tools("upcoming", i) + '<span class="tag warm">Scheduled</span></article>';
+    }).join("") + "</div>" + addBtn("upcoming","Add an event") + "</div>" +
+
+    '<div class="section"><h2>Semester 2 — dates to be announced</h2><div class="cards one" id="tbaList">' +
+    S.upcomingTBA.map(function(e,i){
+      return '<article class="card" data-idx="' + i + '" style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">' +
+        '<div class="date-chip tba"><b>TBA</b></div><div style="flex:1;min-width:240px">' +
+        B("upcomingTBA." + i + ".name","h3") +
+        '<div class="small muted" style="margin:4px 0 0">Semester 2 — date to be notified</div></div>' +
+        tools("upcomingTBA", i) + '<span class="tag tba">Planned</span></article>';
+    }).join("") + "</div>" + addBtn("upcomingTBA","Add a planned event") + "</div>";
+}
+
+/* ---------- render: past ---------- */
+function renderPast(){
+  var years = [];
+  S.past.forEach(function(e){ if(years.indexOf(e.year) < 0) years.push(e.year); });
+  document.getElementById("pastPage").innerHTML =
+    '<p class="lede">Everything the chapter has run. Open any entry to see photos from the day — reports and full galleries sit with the secretariat if you need them for a portfolio.</p>' +
+    years.map(function(y){
+      var items = S.past.map(function(e,i){ return {e:e, i:i}; })
+        .filter(function(x){ return x.e.year === y; })
+        .map(function(x, n){
+          var i = x.i, e = x.e;
+          return '<details class="arc" data-idx="' + i + '"' + (n === 0 && y === years[0] ? " open" : "") + ">" +
+            '<summary><i class="chev"></i><div class="ti">' + B("past." + i + ".name","b") +
+            "<span>" + B("past." + i + ".date","span") + " · " + B("past." + i + ".venue","span") + "</span></div>" +
+            tools("past", i) + "</summary>" +
+            '<div class="body">' + shots(e.photos) +
+            '<div class="photoslug">Photo files: <code>assets/events/' + esc(e.photos) +
+            '-1.jpg</code> — change prefix: <input data-input="past.' + i + '.photos" value="' + esc(e.photos) +
+            '" style="width:190px;display:inline-block"> <label>Year <input data-input="past.' + i + '.year" value="' +
+            esc(e.year) + '" style="width:80px;display:inline-block"></label></div></div></details>';
+        }).join("");
+      return '<div class="section"><h2>' + esc(y) + "</h2><div data-year=\"" + esc(y) + '">' + items + "</div></div>";
+    }).join("") + addBtn("past","Add a past event");
+}
+
+/* ---------- render: office duty roster ---------- */
+function renderOffice(){
+  var r = S.roster, n = nowSlot();
+  var openNow = n && isOpen(r.grid[n.row][n.col]);
+  var cells = "";
+  r.hours.forEach(function(h, ri){
+    cells += '<div class="rtime">' + B("roster.hours." + ri, "span") + "</div>";
+    r.days.forEach(function(d, ci){
+      var v = r.grid[ri][ci], on = isOpen(v);
+      var isNow = n && n.row === ri && n.col === ci && on;
+      cells += '<div class="slot' + (on ? " open" : "") + (isNow ? " now" : "") + '" data-slot="' + ri + "-" + ci + '">' +
+        (on ? TICK : "") +
+        (on && v ? '<span class="nm">' + esc(v) + "</span>" : "") +
+        (on ? '<div class="ed"><input class="nminput" data-input="roster.grid.' + ri + "." + ci +
+              '" value="' + esc(v) + '" placeholder="on duty"></div>' : "") +
+        "</div>";
+    });
+  });
+  document.getElementById("officePage").innerHTML =
+    B("roster.note", "p", ' class="lede"') +
+    '<div class="openbar' + (openNow ? " isopen" : "") + '"><i class="lamp"></i>' +
+    (openNow ? "<b>The office is open right now</b> — walk in." :
+               '<span class="muted">The office is closed right now. The next ticked hour below is when to come.</span>') + "</div>" +
+    '<div class="note" style="margin-bottom:20px">' + B("roster.statusTitle", "b") +
+    B("roster.status", "p", ' class="small" style="margin:0;color:#DCC79A"') + "</div>" +
+    '<div class="ed block" style="margin-bottom:14px"><span class="small muted">' +
+    "Click any square to open or close that hour. Type a name into an open square to show who is on duty.</span></div>" +
+    '<div class="roster-wrap"><div class="roster">' +
+    '<div class="rhead time">Time</div>' +
+    r.days.map(function(d,i){ return '<div class="rhead">' + B("roster.days." + i, "span") + "</div>"; }).join("") +
+    cells + "</div></div>" +
+    '<div class="section"><h2>What you can do at the office</h2><div class="cards">' +
+    '<div class="card"><h3>Collect your membership card</h3><p class="small muted" style="margin:6px 0 0">Bring your matric card. Check the collection status page first so you know your card has arrived.</p></div>' +
+    '<div class="card"><h3>Ask about registration</h3><p class="small muted" style="margin:6px 0 0">Anything about joining, fees, or a card that has gone missing.</p></div>' +
+    '<div class="card"><h3>Talk to the committee</h3><p class="small muted" style="margin:6px 0 0">Event ideas, collaborations, volunteering, or a question you would rather ask in person.</p></div>' +
+    "</div>" +
+    '<div class="linkrow"><a href="' + esc(S.contact.cardStatus) + '" target="_blank" rel="noopener">' +
+    esc(S.contact.cardStatusLabel) + '</a><a href="#contact" data-view="contact">Send a message instead</a></div></div>';
+}
+
+
+/* ---------- render: org ---------- */
+function renderOrg(){
+  function node(rolePath, namePath, cls, roleText){
+    return '<div class="node ' + (cls||"") + '">' + B(namePath,"b") +
+      (rolePath ? B(rolePath,"span") : '<span>' + esc(roleText) + "</span>") + "</div>";
+  }
+  var o = S.org;
+  document.getElementById("orgPage").innerHTML =
+    '<p class="lede">The committee for session 2026 / 2027, from faculty advisors down to the six departments.</p>' +
+    '<div class="chart">' +
+      '<div class="tier" style="padding-top:0">' + o.facultyAdvisors.map(function(a,i){
+        return node(null, "org.facultyAdvisors." + i + ".name", "gold-node", "Faculty advisor"); }).join("") + "</div>" +
+      '<div class="tier">' + o.studentAdvisors.map(function(a,i){
+        return node(null, "org.studentAdvisors." + i + ".name", "", "Student advisor"); }).join("") + "</div>" +
+      '<div class="tier">' + node("org.high.0.role","org.high.0.name","top") + "</div>" +
+      '<div class="tier">' + node("org.high.1.role","org.high.1.name") + "</div>" +
+      '<div class="tier">' + o.high.slice(2).map(function(h,i){
+        return node("org.high." + (i+2) + ".role","org.high." + (i+2) + ".name"); }).join("") + "</div>" +
+      '<div class="tier">' + o.departments.map(function(d,i){
+        return node(null,"org.departments." + i + ".hod","","Head of department"); }).join("") + "</div>" +
+    "</div>" +
+    '<div class="section"><h2>Departments</h2><div class="cards" id="deptList" style="grid-template-columns:repeat(auto-fit,minmax(270px,1fr))">' +
+    o.departments.map(function(d,i){
+      return '<div class="dept" data-idx="' + i + '"><div style="display:flex;align-items:flex-start">' +
+        B("org.departments." + i + ".name","h3") + tools("org.departments", i) + "</div>" +
+        '<div class="hod">Department</div><ul data-list="org.departments.' + i + '.members">' +
+        '<li class="lead">' + B("org.departments." + i + ".hod","span") + " — HOD</li>" +
+        d.members.map(function(m,j){
+          return '<li data-idx="' + j + '">' + B("org.departments." + i + ".members." + j + ".name","span") +
+            tools("org.departments." + i + ".members", j) + "</li>";
+        }).join("") + "</ul>" +
+        addBtn("org.departments." + i + ".members","Add a member") + "</div>";
+    }).join("") + "</div></div>";
+}
+
+/* ---------- render: contact ---------- */
+function renderContact(){
+  document.getElementById("contactPage").innerHTML =
+    '<p class="lede">Tell us what you need — membership help, a collaboration, or sponsorship for an upcoming programme.</p>' +
+    '<div class="split"><div class="card">' +
+    '<form name="contact" id="contactForm" method="POST" data-netlify="true" netlify-honeypot="bot-field">' +
+    '<input type="hidden" name="form-name" value="contact">' +
+    '<p style="display:none"><label>Leave this empty <input name="bot-field"></label></p>' +
+    '<label class="field"><span>Your name</span><input name="name" required></label>' +
+    '<label class="field"><span>Email</span><input type="email" name="email" required></label>' +
+    '<label class="field"><span>What is this about</span><select name="topic">' +
+    "<option>Student membership</option><option>Events and registration</option><option>Collaboration</option>" +
+    "<option>Sponsorship</option><option>Something else</option></select></label>" +
+    '<label class="field"><span>Message</span><textarea name="message" required></textarea></label>' +
+    '<button class="btn primary" type="submit" id="sendBtn">Send message</button>' +
+    '<div class="formmsg" id="formMsg"></div></form></div>' +
+    '<div><div class="card" style="margin-bottom:14px"><h3 style="margin-bottom:10px">Secretariat</h3>' +
+    '<p class="small muted" style="margin:0">' + B("contact.email","span") + "<br>" + B("contact.office","span") +
+    "<br>" + B("contact.address","span") + "</p></div>" +
+    '<div class="card"><h3 style="margin-bottom:10px">Find us online</h3>' +
+    '<p class="small muted" style="margin:0">Every channel we run — Instagram, WhatsApp, registration forms — sits behind one link.</p>' +
+    '<div class="linkrow"><a href="' + esc(S.contact.socials) + '" target="_blank" rel="noopener">' + esc(S.contact.socials.replace(/^https?:\/\//,"")) + "</a>" +
+    '<a href="' + esc(S.contact.iem) + '" target="_blank" rel="noopener">myiem.org.my</a></div></div>' +
+    '<div class="card" style="margin-top:14px"><h3 style="margin-bottom:10px">Or come to the office</h3>' +
+    '<p class="small muted" style="margin:0 0 12px">B001, B7. Walk in during any ticked hour on the duty roster — no appointment needed.</p>' +
+    '<div class="linkrow" style="margin-top:0"><a href="#office" data-view="office">See the duty roster</a></div>' +
+    "</div></div></div>";
+}
+
+/* ---------- render everything ---------- */
+function paintStatic(){
+  var hero = document.querySelector(".hero");
+  if(hero && S.rev){
+    hero.style.backgroundImage =
+      'linear-gradient(105deg,rgba(4,6,15,.94) 8%,rgba(6,17,39,.78) 46%,rgba(6,17,39,.34) 100%),' +
+      "url('assets/hero.jpg" + rev() + "')";
+  }
+  var com = document.querySelector('.frame[data-file="assets/committee.jpg"]');
+  if(com && S.rev) com.style.backgroundImage = "url('assets/committee.jpg" + rev() + "')";
+  document.querySelectorAll("[data-bind]").forEach(function(el){
+    if(el.closest("#deck,#membershipPage,#upcomingPage,#pastPage,#rosterPage,#orgPage,#contactPage")) return;
+    el.textContent = get(el.dataset.bind);
+  });
+  [["railIem","iem"],["aboutIem","iem"],["footIem","iem"]].forEach(function(p){
+    var el = document.getElementById(p[0]); if(el) el.href = S.contact[p[1]];
+  });
+  [["railSocials","socials"],["aboutSocials","socials"],["footSocials","socials"],["footCard","cardStatus"]].forEach(function(p){
+    var el = document.getElementById(p[0]); if(el) el.href = S.contact[p[1]];
+  });
+  var hn = document.getElementById("heroNext");
+  if(hn) hn.textContent = S.next.name.split(":")[0] + ", " + (S.next.label || "");
+}
+function renderAll(){
+  paintStatic();
+  renderDeck(); renderMembership(); renderUpcoming(); renderPast(); renderOffice(); renderOrg(); renderContact();
+  startCountdowns(); checkShots(); wireSortables();
+  if(EDIT) enableEditing();
+}
+
+/* ---------- countdowns / clock / counter ---------- */
+var cdTimer = null;
+function startCountdowns(){
+  var cds = Array.prototype.map.call(document.querySelectorAll("[data-countdown]"), function(el){
+    return { el:el, t:new Date(el.dataset.countdown).getTime() };
+  });
+  function pad(n){ return String(n).padStart(2,"0"); }
+  function tick(){
+    cds.forEach(function(c,idx){
+      var s = Math.floor(Math.max(0, c.t - Date.now()) / 1000);
+      var p = { d:Math.floor(s/86400), h:Math.floor(s%86400/3600), m:Math.floor(s%3600/60), s:s%60 };
+      Object.keys(p).forEach(function(k){
+        var el = c.el.querySelector('[data-c="' + k + '"]');
+        var v = pad(p[k]);
+        if(el && el.textContent !== v) el.textContent = v;
+      });
+      if(idx === 0){ var hd = document.getElementById("heroDays"); if(hd) hd.textContent = p.d; }
+    });
+  }
+  clearInterval(cdTimer); tick(); cdTimer = setInterval(tick, 1000);
+}
+function countUp(){
+  var mc = document.getElementById("memberCount"); if(!mc) return;
+  var to = +S.members.count || 0;
+  if(calmMotion()){ mc.textContent = to.toLocaleString("en-MY"); return; }
+  requestAnimationFrame(function(start){
+    (function run(now){
+      var k = Math.min(1, (now - start) / 1400);
+      mc.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))).toLocaleString("en-MY");
+      if(k < 1) requestAnimationFrame(run);
+    })(start);
+  });
+}
+var clockEl = document.getElementById("clock");
+function tickClock(){ clockEl.textContent = new Date().toLocaleTimeString("en-GB",{timeZone:"Asia/Kuala_Lumpur",hour:"2-digit",minute:"2-digit"}); }
+tickClock(); setInterval(tickClock, 15000);
+
+function checkShots(){
+  document.querySelectorAll(".shot[data-file]:not([data-checked])").forEach(function(el){
+    el.setAttribute("data-checked","1");
+    var img = new Image();
+    img.onerror = function(){ el.classList.add("missing"); };
+    img.src = el.dataset.file;
+  });
+}
+
+/* ---------- generic drag-to-reorder ---------- */
+var EASE = "cubic-bezier(.2,.8,.2,1)";
+var DRAG = null;
+
+function rectsOf(container){
+  var m = new Map();
+  Array.prototype.forEach.call(container.children, function(el){ m.set(el, el.getBoundingClientRect()); });
+  return m;
+}
+function flipIn(container, before){
+  Array.prototype.forEach.call(container.children, function(el){
+    if(DRAG && el === DRAG.el) return;
+    var b = before.get(el); if(!b) return;
+    var a = el.getBoundingClientRect();
+    var dx = b.left - a.left, dy = b.top - a.top;
+    if(!dx && !dy) return;
+    el.style.transition = "none";
+    el.style.transform = "translate(" + dx + "px," + dy + "px)";
+    requestAnimationFrame(function(){
+      el.style.transition = "transform .3s " + EASE;
+      el.style.transform = "";
+      setTimeout(function(){ el.style.transition = ""; }, 320);
+    });
+  });
+}
+function makeSortable(container, handleSel, onEnd){
+  if(!container || container.dataset.sortable) return;
+  container.dataset.sortable = "1";
+  container.addEventListener("pointerdown", function(e){
+    var h = e.target.closest(handleSel);
+    if(!h || !container.contains(h)) return;
+    if(h.closest("[data-sortable]") !== container) return;
+    if(e.button !== undefined && e.button !== 0) return;
+    var item = h;
+    while(item && item.parentElement !== container) item = item.parentElement;
+    if(!item) return;
+    DRAG = { el:item, box:container, x:e.clientX, y:e.clientY, done:onEnd };
+    item.style.transition = "";
+    item.classList.add("lift"); item.classList.remove("settle");
+    container.classList.add("dragging");
+    if(e.target.setPointerCapture) e.target.setPointerCapture(e.pointerId);
+    e.preventDefault();
+  });
+}
+window.addEventListener("pointermove", function(e){
+  if(!DRAG || !DRAG.box.contains(DRAG.el)) return;
+  var box = DRAG.box;
+  DRAG.el.style.transform = "translate(" + (e.clientX-DRAG.x) + "px," + (e.clientY-DRAG.y) + "px)";
+  var over = null;
+  Array.prototype.forEach.call(box.children, function(el){
+    if(el === DRAG.el) return;
+    var b = el.getBoundingClientRect();
+    if(e.clientX >= b.left && e.clientX <= b.right && e.clientY >= b.top && e.clientY <= b.bottom) over = el;
+  });
+  if(!over) return;
+  var before = rectsOf(box);
+  var kids = Array.prototype.slice.call(box.children);
+  var after = kids.indexOf(over) > kids.indexOf(DRAG.el);
+  box.insertBefore(DRAG.el, after ? over.nextSibling : over);
+  var b0 = before.get(DRAG.el), nr = DRAG.el.getBoundingClientRect();
+  DRAG.x += (nr.left - b0.left); DRAG.y += (nr.top - b0.top);
+  DRAG.el.style.transform = "translate(" + (e.clientX-DRAG.x) + "px," + (e.clientY-DRAG.y) + "px)";
+  flipIn(box, before);
+});
+function endDrag(){
+  if(!DRAG) return;
+  var d = DRAG; DRAG = null;
+  d.el.classList.add("settle"); d.el.style.transform = ""; d.el.classList.remove("lift");
+  d.box.classList.remove("dragging");
+  setTimeout(function(){ d.el.classList.remove("settle"); }, 340);
+  if(d.done) d.done(Array.prototype.slice.call(d.box.children));
+}
+window.addEventListener("pointerup", endDrag);
+window.addEventListener("pointercancel", endDrag);
+function reorderBy(listPath, els){
+  var arr = get(listPath);
+  var order = els.map(function(el){ return +el.dataset.idx; }).filter(function(n){ return !isNaN(n); });
+  if(order.length !== arr.length) return;
+  set(listPath, order.map(function(i){ return arr[i]; }));
+  markSaved();
+}
+function wireSortables(){
+  makeSortable(document.getElementById("deck"), ".grip", function(els){
+    S.deckOrder = els.map(function(el){ return el.dataset.panel; });
+    markSaved();
+  });
+  if(!EDIT) return;
+  [["upList","upcoming"],["tbaList","upcomingTBA"],["benefitList","membership.benefits"],
+   ["stepList","membership.steps"],["faqList","membership.faqs"],["deptList","org.departments"]
+  ].forEach(function(p){
+    makeSortable(document.getElementById(p[0]), ".minigrip", function(els){ reorderBy(p[1], els); rerender(); });
+  });
+  document.querySelectorAll("#pastPage [data-year]").forEach(function(box){
+    makeSortable(box, ".minigrip", function(){ reorderPastFromDom(); rerender(); });
+  });
+  document.querySelectorAll("[data-list]").forEach(function(ul){
+    makeSortable(ul, ".minigrip", function(els){ reorderBy(ul.dataset.list, els.filter(function(e){ return e.dataset.idx !== undefined; })); rerender(); });
+  });
+}
+function reorderPastFromDom(){
+  var order = [];
+  document.querySelectorAll("#pastPage .arc").forEach(function(el){ order.push(+el.dataset.idx); });
+  if(order.length !== S.past.length) return;
+  S.past = order.map(function(i){ return S.past[i]; });
+  markSaved();
+}
+
+/* ---------- view switching ---------- */
+var titles = {
+  home:["Home","Institution of Engineers Malaysia Student Section, UTHM"],
+  membership:["Student membership","Who can join, what it costs, and how to register"],
+  upcoming:["Upcoming events","Programmes lined up for this session"],
+  past:["Past events","The archive of what we have run"],
+  office:["Office duty roster","When the IEMSS office is open and who is on duty"],
+  org:["Organisation chart","Committee for session 2026 / 2027"],
+  contact:["Contact us","Secretariat, office and a direct message form"]
+};
+var current = "home";
+function show(view){
+  if(!titles[view]) view = "home";
+  current = view;
+  document.querySelectorAll(".view").forEach(function(s){ s.classList.toggle("on", s.id === "view-" + view); });
+  document.querySelectorAll(".nav a").forEach(function(a){
+    if(a.dataset.view === view) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current");
+  });
+  document.getElementById("viewTitle").textContent = titles[view][0];
+  document.getElementById("viewSub").textContent = titles[view][1];
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+document.addEventListener("click", function(e){
+  var t = e.target.closest("[data-view]");
+  if(!t || e.target.closest("[data-bind]")) return;
+  e.preventDefault();
+  var v = t.dataset.view;
+  history.replaceState(null,"", "#" + v + (EDIT ? "" : ""));
+  show(v);
+});
+
+/* ---------- editing ---------- */
+function enableEditing(){
+  document.body.classList.add("editing");
+  document.querySelectorAll(".arc summary").forEach(function(sm){
+    sm.addEventListener("click", function(ev){
+      if(ev.target.closest("[data-bind], .rowtools")) ev.preventDefault();
+    });
+  });
+  document.querySelectorAll("[data-bind]").forEach(function(el){
+    el.setAttribute("contenteditable","true");
+    el.setAttribute("spellcheck","false");
+  });
+}
+function rerender(){
+  renderAll();
+  show(current);
+}
+document.addEventListener("input", function(e){
+  var el = e.target;
+  if(el.dataset && el.dataset.bind){ set(el.dataset.bind, el.textContent.trim()); markSaved(); }
+  if(el.dataset && el.dataset.input){ set(el.dataset.input, el.value.trim()); markSaved(); }
+});
+document.addEventListener("change", function(e){
+  if(e.target.dataset && e.target.dataset.input) rerender();
+});
+document.addEventListener("keydown", function(e){
+  if(e.key === "Enter" && e.target.dataset && e.target.dataset.bind && e.target.tagName !== "TEXTAREA"){
+    e.preventDefault(); e.target.blur();
+  }
+});
+document.addEventListener("click", function(e){
+  var add = e.target.closest("[data-add]");
+  if(add){
+    var path = add.dataset.add, arr = get(path);
+    var blank = {
+      "upcoming": {name:"New event", date:"2026-12-31", label:"", venue:""},
+      "upcomingTBA": {name:"New event"},
+      "past": {year:String(new Date().getFullYear()), name:"New event", date:"", venue:"", photos:"new-event"},
+      "membership.benefits": {title:"New benefit", body:"Describe it here."},
+      "membership.steps": {title:"New step", body:"Describe it here."},
+      "membership.faqs": {q:"New question?", a:"The answer."}
+    }[path] || {name:"New name"};
+    arr.push(JSON.parse(JSON.stringify(blank)));
+    markSaved(); rerender(); return;
+  }
+  var slot = e.target.closest("[data-slot]");
+  if(slot && EDIT && !e.target.closest("input")){
+    var rc = slot.dataset.slot.split("-");
+    var cur = S.roster.grid[+rc[0]][+rc[1]];
+    S.roster.grid[+rc[0]][+rc[1]] = isOpen(cur) ? false : "";
+    markSaved(); rerender(); return;
+  }
+  var del = e.target.closest("[data-del]");
+  if(del){
+    e.preventDefault(); e.stopPropagation();
+    var arr2 = get(del.dataset.del);
+    arr2.splice(+del.dataset.i, 1);
+    markSaved(); rerender();
+  }
+});
+
+
+/* ---------- contact form submission ---------- */
+document.addEventListener("submit", function(e){
+  var form = e.target;
+  if(form.id !== "contactForm") return;
+  e.preventDefault();
+
+  var btn = document.getElementById("sendBtn");
+  var msg = document.getElementById("formMsg");
+  var data = new FormData(form);
+  if(data.get("bot-field")) return;               // silently drop bots
+
+  var body = new URLSearchParams();
+  data.forEach(function(v,k){ body.append(k, v); });
+
+  btn.disabled = true;
+  btn.textContent = "Sending…";
+  msg.className = "formmsg";
+
+  var jobs = [];
+
+  // 1. Google Sheet + email, if the Apps Script endpoint is configured
+  var url = S.forms && S.forms.endpoint;
+  if(url){
+    jobs.push(fetch(url, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {"Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"},
+      body: body.toString()
+    }).then(function(){ return "script"; }));
+  }
+
+  // 2. Netlify Forms, always — the backup record
+  jobs.push(fetch("/", {
+    method: "POST",
+    headers: {"Content-Type": "application/x-www-form-urlencoded"},
+    body: body.toString()
+  }).then(function(r){ return r.ok ? "netlify" : Promise.reject(); }));
+
+  Promise.allSettled(jobs).then(function(res){
+    var sent = res.some(function(r){ return r.status === "fulfilled"; });
+    btn.disabled = false;
+    btn.textContent = "Send message";
+    if(sent){
+      form.reset();
+      msg.textContent = (S.forms && S.forms.successMsg) || "Thank you — your message has been sent.";
+      msg.className = "formmsg show good";
+    } else {
+      msg.textContent = (S.forms && S.forms.failMsg) || "That did not send. Please email us directly.";
+      msg.className = "formmsg show bad";
+    }
+  });
+});
+
+/* ---------- edit bar ---------- */
+function download(name, text){
+  var a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([text], {type:"text/javascript"}));
+  a.download = name; a.click();
+  setTimeout(function(){ URL.revokeObjectURL(a.href); }, 2000);
+}
+var eb = {
+  edExport: function(){
+    download("content.js",
+      "/* IEMSS UTHM — site content. Exported " + new Date().toLocaleString("en-GB") + " */\n\nwindow.SITE = " +
+      JSON.stringify(S, null, 2) + ";\n");
+  },
+  edImport: function(){ document.getElementById("edFile").click(); },
+  edDiscard: function(){
+    if(!confirm("Throw away every change you made in this browser and go back to the published content.js?")) return;
+    store("del");
+    S = window.SITE = JSON.parse(JSON.stringify(DEFAULTS));
+    rerender();
+  },
+  edExit: function(){ location.href = location.pathname + location.hash; }
+};
+Object.keys(eb).forEach(function(id){
+  var el = document.getElementById(id); if(el) el.addEventListener("click", eb[id]);
+});
+document.getElementById("edFile").addEventListener("change", function(e){
+  var f = e.target.files[0]; if(!f) return;
+  var r = new FileReader();
+  r.onload = function(){
+    try{
+      var txt = String(r.result);
+      var json = txt.slice(txt.indexOf("{"), txt.lastIndexOf("}") + 1);
+      S = window.SITE = JSON.parse(json);
+      markSaved(); rerender();
+    }catch(err){ alert("That file could not be read as site content."); }
+  };
+  r.readAsText(f);
+});
+
+/* ---------- beams ---------- */
+if(!calmMotion()){
+  var box = document.getElementById("beams"), html = "";
+  for(var i=0;i<7;i++) html += '<div class="beam v' + (i%3===0?" gold":"") + '" style="left:' + (6+i*13.5) + "%;animation-duration:" + (9+i*2.6) + "s;animation-delay:-" + (i*3.4) + 's"></div>';
+  for(var j=0;j<4;j++) html += '<div class="beam h" style="top:' + (16+j*21) + "%;animation-duration:" + (13+j*4) + "s;animation-delay:-" + (j*5.5) + 's"></div>';
+  box.innerHTML = html;
+}
+
+/* ---------- go ---------- */
+function boot(){
+  renderAll();
+  show((location.hash || "#home").slice(1));
+}
+
+/* The site manager at /admin/ writes data/content.json. Read that first; if it
+   is not there (or we are being opened straight off a disk) fall back to the
+   copy built into this page so the site always renders. */
+if(window.fetch && location.protocol !== "file:"){
+  var done = false;
+  var finish = function(){ if(!done){ done = true; boot(); } };
+  setTimeout(finish, 4000);
+  fetch("data/content.json", { cache: "no-store" })
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(j){ if(j && j.hero && j.org) S = window.SITE = j; })
+    .catch(function(){})
+    .then(finish, finish);
+} else {
+  boot();
+}
+})();
+</script>
+</body>
+</html>
