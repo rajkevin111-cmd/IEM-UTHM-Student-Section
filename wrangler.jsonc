@@ -27,7 +27,7 @@
   "kv_namespaces": [
     {
       "binding": "SITE",
-      "id": "PASTE_YOUR_KV_NAMESPACE_ID_HERE"
+      "id": "iemss-site"
     }
   ],
 
